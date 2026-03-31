@@ -348,7 +348,7 @@ footer{background:var(--black);border-top:1px solid var(--gold-border);padding:5
 .pay-success-title{font-family:var(--display);font-size:2rem;letter-spacing:4px;color:var(--gold);margin-bottom:10px;font-weight:700;}
 .pay-success-text{color:var(--white-dim);font-family:var(--body);font-style:italic;font-size:1rem;line-height:1.8;margin-bottom:24px;}
 .comprovante-box{background:var(--black-3);border:1px solid var(--gold-border);padding:20px;text-align:left;margin-bottom:20px;}
-.comprovante-title{font-family:var(--sans);font-size:.62px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-size:.62rem;font-weight:500;}
+.comprovante-title{font-family:var(--sans);font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;font-weight:500;}
 .comprovante-step{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;font-family:var(--sans);font-size:.75rem;color:var(--white-dim);letter-spacing:1px;line-height:1.5;font-weight:300;}
 .comprovante-step .step-n{color:var(--gold);font-weight:600;flex-shrink:0;}
 .btn-whatsapp-comp{width:100%;padding:14px;background:#25D366;color:#fff;font-family:var(--display);font-size:1rem;letter-spacing:3px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .2s;font-weight:700;}
@@ -734,7 +734,6 @@ footer{background:var(--black);border-top:1px solid var(--gold-border);padding:5
       <div class="section-eyebrow">Agendamento Online</div>
       <h2 class="section-title">Reserve seu<br><em>horário agora</em></h2>
       <p style="color:var(--white-dim);max-width:420px;margin-top:12px;line-height:1.85;font-family:var(--body);font-style:italic;font-size:1rem;">Selecione o dia e o horário. Sem fila, sem espera. Só você e a tesoura.</p>
-      <!-- Sync status indicator -->
       <div class="sync-badge" id="syncBadge" style="margin-top:16px;">
         <span class="sync-dot" id="syncDot"></span>
         <span id="syncText">Carregando horários...</span>
@@ -1043,40 +1042,131 @@ function setSyncStatus(state, text) {
 }
 
 // ─────────────────────────────────────────────
-// SHARED BOOKINGS — window.storage (shared: true)
-// Todos os dispositivos leem e escrevem na mesma base.
-// Chave: "bookings" → objeto { "2025-06-10_09:00": {name,phone,service}, ... }
+// DATA UTILS — gera string "YYYY-MM-DD" de hoje
+// no fuso horário local (Brasília)
 // ─────────────────────────────────────────────
-const STORAGE_KEY = 'jr_bookings_shared_v1';
+function todayStr() {
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, '0');
+  const d = String(now.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
 
-// Cache local em memória (evita chamadas desnecessárias ao storage durante a sessão)
+// ─────────────────────────────────────────────
+// BOOKINGS
+//
+// Estrutura armazenada:
+// {
+//   "2025-06-10": {           ← chave = data
+//     "09:00": {name, phone, service},
+//     "10:30": {name, phone, service},
+//     ...
+//   },
+//   ...
+// }
+//
+// Os horários ficam indisponíveis até o fim do dia.
+// No primeiro carregamento do dia seguinte, as datas
+// antigas são removidas e os horários voltam a abrir.
+//
+// Usa `localStorage` no navegador comum e, se existir,
+// também sincroniza com `window.storage`.
+// ─────────────────────────────────────────────
+const STORAGE_KEY = 'jr_bookings_v3';
+
+// Cache local (objeto aninhado: data → {slot → dados})
 let bookings = {};
 let storageReady = false;
+
+function hasSharedStorage() {
+  return !!(
+    window.storage &&
+    typeof window.storage.get === 'function' &&
+    typeof window.storage.set === 'function'
+  );
+}
+
+function readLocalBookings() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : {};
+  } catch (err) {
+    console.error('Local storage read error:', err);
+    return {};
+  }
+}
+
+function writeLocalBookings(data) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  } catch (err) {
+    console.error('Local storage write error:', err);
+  }
+}
+
+async function readStoredBookings() {
+  if (hasSharedStorage()) {
+    const result = await window.storage.get(STORAGE_KEY, true);
+    if (result && result.value) {
+      const parsed = JSON.parse(result.value);
+      writeLocalBookings(parsed);
+      return parsed;
+    }
+  }
+  return readLocalBookings();
+}
+
+async function writeStoredBookings(data) {
+  writeLocalBookings(data);
+  if (hasSharedStorage()) {
+    await window.storage.set(STORAGE_KEY, JSON.stringify(data), true);
+  }
+}
+
+// Remove todas as entradas de dias anteriores ao hoje
+function purgeOldDates(data) {
+  const today = todayStr();
+  const cleaned = {};
+  for (const date in data) {
+    if (date >= today) {
+      cleaned[date] = data[date];
+    }
+  }
+  return cleaned;
+}
 
 async function loadBookings() {
   setSyncStatus('syncing', 'Sincronizando horários...');
   try {
-    const result = await window.storage.get(STORAGE_KEY, true); // shared=true
-    if (result && result.value) {
-      bookings = JSON.parse(result.value);
-    } else {
-      bookings = {};
+    const raw = await readStoredBookings();
+    const cleaned = purgeOldDates(raw);
+    bookings = cleaned;
+    const removedCount = Object.keys(raw).length - Object.keys(cleaned).length;
+    if (removedCount > 0) {
+      await writeStoredBookings(cleaned);
     }
     storageReady = true;
     setSyncStatus('synced', 'Horários sincronizados ✓');
   } catch (err) {
-    // Chave não existe ainda ou erro — começa vazio
-    bookings = {};
+    bookings = purgeOldDates(readLocalBookings());
+    writeLocalBookings(bookings);
     storageReady = true;
-    setSyncStatus('synced', 'Horários sincronizados ✓');
+    setSyncStatus('synced', 'Horários carregados ✓');
   }
 }
 
-async function saveBooking(key, data) {
-  bookings[key] = data;
+// Verifica se um slot está reservado
+function isSlotTaken(dateStr, slot) {
+  return !!(bookings[dateStr] && bookings[dateStr][slot]);
+}
+
+async function saveBooking(dateStr, slot, data) {
+  if (!bookings[dateStr]) bookings[dateStr] = {};
+  bookings[dateStr][slot] = data;
   setSyncStatus('syncing', 'Salvando...');
   try {
-    await window.storage.set(STORAGE_KEY, JSON.stringify(bookings), true); // shared=true
+    await writeStoredBookings(bookings);
     setSyncStatus('synced', 'Horário salvo e sincronizado ✓');
   } catch (err) {
     setSyncStatus('error', 'Erro ao sincronizar — tente novamente');
@@ -1084,17 +1174,33 @@ async function saveBooking(key, data) {
   }
 }
 
-// Recarrega os bookings do storage antes de mostrar os slots (garante dados frescos)
+// Recarrega os bookings do storage antes de mostrar os slots
 async function refreshAndRenderSlots(dateStr, areaId, onSel, y, m, d) {
   setSyncStatus('syncing', 'Verificando disponibilidade...');
   try {
-    const result = await window.storage.get(STORAGE_KEY, true);
-    if (result && result.value) bookings = JSON.parse(result.value);
+    bookings = purgeOldDates(await readStoredBookings());
     setSyncStatus('synced', 'Horários sincronizados ✓');
   } catch(e) {
+    bookings = purgeOldDates(readLocalBookings());
     setSyncStatus('synced', 'Horários sincronizados ✓');
   }
   renderSlots(dateStr, areaId, onSel, y, m, d);
+}
+
+// Polling: atualiza os slots da data selecionada a cada 30s
+let pollingInterval = null;
+function startPolling(dateStr, areaId, onSel, y, m, d) {
+  stopPolling();
+  pollingInterval = setInterval(async () => {
+    try {
+      bookings = purgeOldDates(await readStoredBookings());
+      // Re-renderiza slots sem mover o foco do usuário
+      renderSlots(dateStr, areaId, onSel, y, m, d, true);
+    } catch(e) {}
+  }, 30000); // 30 segundos
+}
+function stopPolling() {
+  if (pollingInterval) { clearInterval(pollingInterval); pollingInterval = null; }
 }
 
 // ─────────────────────────────────────────────
@@ -1227,7 +1333,7 @@ function closeDetail(){
 document.getElementById('detailOverlay').addEventListener('click',e=>{if(e.target===document.getElementById('detailOverlay'))closeDetail();});
 
 // ─────────────────────────────────────────────
-// CART (mantém localStorage — é por usuário mesmo)
+// CART
 // ─────────────────────────────────────────────
 function addToCart(id,e){
   if(e){e.stopPropagation();}
@@ -1309,14 +1415,18 @@ function confirmPayment(){
 }
 
 // ─────────────────────────────────────────────
-// CALENDAR — shared bookings via window.storage
+// CALENDAR
 // ─────────────────────────────────────────────
 const today=new Date();today.setHours(0,0,0,0);
 const MONTHS=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 const DAYS_PT=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
 const ALL_SLOTS=['08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30'];
+
 let selDate=null,selSlot=null,mainY=today.getFullYear(),mainM=today.getMonth();
 let selDateM=null,selSlotM=null,modY=today.getFullYear(),modM=today.getMonth();
+
+// Estado de polling por calendário
+let activePolling = { main: null, modal: null };
 
 function buildCal(y,m,gid,mid,onSel){
   const g=document.getElementById(gid);const lbl=document.getElementById(mid);if(!g||!lbl)return;
@@ -1338,7 +1448,9 @@ function buildCal(y,m,gid,mid,onSel){
   }
 }
 function clrSel(gid){document.querySelectorAll(`#${gid} .cal-day.selected`).forEach(e=>e.classList.remove('selected'));}
+
 function renderMain(){buildCal(mainY,mainM,'calGrid','calMonth',onSelMain);}
+
 function onSelMain(y,m,d,el,gid){
   clrSel(gid);el.classList.add('selected');
   selDate=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
@@ -1347,8 +1459,16 @@ function onSelMain(y,m,d,el,gid){
   document.getElementById('bookingSuccess').classList.remove('show');
   document.getElementById('resumoAgendamento').style.display='none';
   document.getElementById('slotsArea').innerHTML='<div class="slot-empty" style="border-color:var(--gold-border);color:var(--gold);">⏳ Verificando disponibilidade...</div>';
+  // Para polling anterior e inicia para esta data
+  if(activePolling.main) clearInterval(activePolling.main);
   refreshAndRenderSlots(selDate,'slotsArea',onSlotMain,y,m,d);
+  // Polling a cada 30s para manter slots atualizados em tempo real
+  activePolling.main = setInterval(async()=>{
+    try{bookings=purgeOldDates(await readStoredBookings());}catch(e){}
+    if(selDate) renderSlots(selDate,'slotsArea',onSlotMain,y,m,d,true);
+  },30000);
 }
+
 function onSlotMain(slot){
   selSlot=slot;
   document.querySelectorAll('#slotsArea .slot').forEach(s=>s.classList.toggle('slot-selected',s.dataset.slot===slot));
@@ -1357,45 +1477,89 @@ function onSlotMain(slot){
   const dt=new Date(selDate+'T12:00:00');
   r.style.display='block';r.innerHTML=`📅 <strong>${dt.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'})}</strong> às <strong>${slot}</strong>`;
 }
-document.getElementById('prevMonth').addEventListener('click',()=>{if(mainM===0){mainM=11;mainY--;}else mainM--;selDate=null;selSlot=null;renderMain();document.getElementById('slotsArea').innerHTML='<div class="slot-empty">← Selecione uma data no calendário</div>';document.getElementById('bookingForm').classList.remove('show');document.getElementById('bookingSuccess').classList.remove('show');});
-document.getElementById('nextMonth').addEventListener('click',()=>{if(mainM===11){mainM=0;mainY++;}else mainM++;selDate=null;selSlot=null;renderMain();document.getElementById('slotsArea').innerHTML='<div class="slot-empty">← Selecione uma data no calendário</div>';document.getElementById('bookingForm').classList.remove('show');document.getElementById('bookingSuccess').classList.remove('show');});
+
+document.getElementById('prevMonth').addEventListener('click',()=>{
+  if(activePolling.main){clearInterval(activePolling.main);activePolling.main=null;}
+  if(mainM===0){mainM=11;mainY--;}else mainM--;
+  selDate=null;selSlot=null;renderMain();
+  document.getElementById('slotsArea').innerHTML='<div class="slot-empty">← Selecione uma data no calendário</div>';
+  document.getElementById('bookingForm').classList.remove('show');
+  document.getElementById('bookingSuccess').classList.remove('show');
+});
+document.getElementById('nextMonth').addEventListener('click',()=>{
+  if(activePolling.main){clearInterval(activePolling.main);activePolling.main=null;}
+  if(mainM===11){mainM=0;mainY++;}else mainM++;
+  selDate=null;selSlot=null;renderMain();
+  document.getElementById('slotsArea').innerHTML='<div class="slot-empty">← Selecione uma data no calendário</div>';
+  document.getElementById('bookingForm').classList.remove('show');
+  document.getElementById('bookingSuccess').classList.remove('show');
+});
 
 function renderModal(){buildCal(modY,modM,'calGridM','calMonthM',onSelMod);}
+
 function onSelMod(y,m,d,el,gid){
   clrSel(gid);el.classList.add('selected');
   selDateM=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
   selSlotM=null;
   const r=document.getElementById('resumoAgendamentoM');if(r)r.style.display='none';
   document.getElementById('slotsAreaM').innerHTML='<div class="slot-empty" style="border-color:var(--gold-border);color:var(--gold);">⏳ Verificando disponibilidade...</div>';
+  if(activePolling.modal) clearInterval(activePolling.modal);
   refreshAndRenderSlots(selDateM,'slotsAreaM',onSlotMod,y,m,d);
+  activePolling.modal = setInterval(async()=>{
+    try{bookings=purgeOldDates(await readStoredBookings());}catch(e){}
+    if(selDateM) renderSlots(selDateM,'slotsAreaM',onSlotMod,y,m,d,true);
+  },30000);
 }
+
 function onSlotMod(slot){
   selSlotM=slot;
   document.querySelectorAll('#slotsAreaM .slot').forEach(s=>s.classList.toggle('slot-selected',s.dataset.slot===slot));
   const r=document.getElementById('resumoAgendamentoM');
   if(r&&selDateM){const dt=new Date(selDateM+'T12:00:00');r.style.display='block';r.innerHTML=`📅 <strong>${dt.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'})}</strong> às <strong>${slot}</strong>`;}
 }
-document.getElementById('prevMonthM').addEventListener('click',()=>{if(modM===0){modM=11;modY--;}else modM--;selDateM=null;selSlotM=null;renderModal();document.getElementById('slotsAreaM').innerHTML='<div class="slot-empty">← Selecione uma data</div>';});
-document.getElementById('nextMonthM').addEventListener('click',()=>{if(modM===11){modM=0;modY++;}else modM++;selDateM=null;selSlotM=null;renderModal();document.getElementById('slotsAreaM').innerHTML='<div class="slot-empty">← Selecione uma data</div>';});
 
-function renderSlots(dateStr,areaId,onSel,y,m,d){
+document.getElementById('prevMonthM').addEventListener('click',()=>{
+  if(activePolling.modal){clearInterval(activePolling.modal);activePolling.modal=null;}
+  if(modM===0){modM=11;modY--;}else modM--;
+  selDateM=null;selSlotM=null;renderModal();
+  document.getElementById('slotsAreaM').innerHTML='<div class="slot-empty">← Selecione uma data</div>';
+});
+document.getElementById('nextMonthM').addEventListener('click',()=>{
+  if(activePolling.modal){clearInterval(activePolling.modal);activePolling.modal=null;}
+  if(modM===11){modM=0;modY++;}else modM++;
+  selDateM=null;selSlotM=null;renderModal();
+  document.getElementById('slotsAreaM').innerHTML='<div class="slot-empty">← Selecione uma data</div>';
+});
+
+// renderSlots — silent=true não mostra o spinner, só atualiza
+function renderSlots(dateStr,areaId,onSel,y,m,d,silent=false){
   const area=document.getElementById(areaId);if(!area)return;
+
+  // Guarda o slot selecionado atualmente para re-selecionar após refresh
+  const currentSelected = areaId==='slotsArea' ? selSlot : selSlotM;
+
   const isSat=new Date(y,m,d).getDay()===6;const max=isSat?'17:00':'19:00';
-  const slots=ALL_SLOTS.filter(s=>s<=max);area.innerHTML='';
+  const slots=ALL_SLOTS.filter(s=>s<=max);
+
   const grid=document.createElement('div');grid.className='slots-grid';
   slots.forEach(slot=>{
-    const key=`${dateStr}_${slot}`;const taken=!!bookings[key];
+    const taken = isSlotTaken(dateStr, slot);
     const div=document.createElement('div');
     div.className='slot'+(taken?' slot-taken':'');
+    if(!taken && slot===currentSelected) div.classList.add('slot-selected');
     div.textContent=slot;div.dataset.slot=slot;
     if(!taken)div.addEventListener('click',()=>onSel(slot));
     grid.appendChild(div);
   });
+
+  // Substitui conteúdo suavemente
+  area.innerHTML='';
   area.appendChild(grid);
 }
 
 // ─────────────────────────────────────────────
 // CONFIRM BOOKINGS — salva no shared storage
+// com estrutura aninhada por data
 // ─────────────────────────────────────────────
 async function confirmBooking(){
   const name=document.getElementById('clientName').value.trim();
@@ -1405,16 +1569,13 @@ async function confirmBooking(){
   if(!selDate||!selSlot){showToast('Selecione data e horário');return;}
   if(!service){showToast('Selecione um serviço');return;}
 
-  // Verifica novamente se o slot ainda está livre (race condition)
+  // Busca dados frescos antes de confirmar (evita conflito)
   try {
-    const fresh = await window.storage.get(STORAGE_KEY, true);
-    if(fresh && fresh.value) bookings = JSON.parse(fresh.value);
+    bookings = purgeOldDates(await readStoredBookings());
   } catch(e){}
 
-  const key=`${selDate}_${selSlot}`;
-  if(bookings[key]){
+  if(isSlotTaken(selDate, selSlot)){
     showToast('❌ Esse horário acabou de ser reservado! Escolha outro.',3500);
-    // Recarrega slots
     const pts=selDate.split('-');
     await refreshAndRenderSlots(selDate,'slotsArea',onSlotMain,+pts[0],+pts[1]-1,+pts[2]);
     selSlot=null;
@@ -1423,7 +1584,7 @@ async function confirmBooking(){
     return;
   }
 
-  await saveBooking(key, {name,phone,service});
+  await saveBooking(selDate, selSlot, {name, phone, service});
 
   document.getElementById('bookingForm').classList.remove('show');
   document.getElementById('bookingSuccess').classList.add('show');
@@ -1444,14 +1605,11 @@ async function confirmBookingModal(){
   if(!selDateM||!selSlotM){showToast('Selecione data e horário');return;}
   if(!service){showToast('Selecione um serviço');return;}
 
-  // Verifica novamente se o slot ainda está livre
   try {
-    const fresh = await window.storage.get(STORAGE_KEY, true);
-    if(fresh && fresh.value) bookings = JSON.parse(fresh.value);
+    bookings = purgeOldDates(await readStoredBookings());
   } catch(e){}
 
-  const key=`${selDateM}_${selSlotM}`;
-  if(bookings[key]){
+  if(isSlotTaken(selDateM, selSlotM)){
     showToast('❌ Esse horário acabou de ser reservado! Escolha outro.',3500);
     const pts=selDateM.split('-');
     await refreshAndRenderSlots(selDateM,'slotsAreaM',onSlotMod,+pts[0],+pts[1]-1,+pts[2]);
@@ -1461,7 +1619,7 @@ async function confirmBookingModal(){
     return;
   }
 
-  await saveBooking(key, {name,phone,service});
+  await saveBooking(selDateM, selSlotM, {name, phone, service});
 
   document.getElementById('bookingSuccessM').classList.add('show');
   const dt=new Date(selDateM+'T12:00:00');
@@ -1477,7 +1635,11 @@ function openModal(service){
   document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden';
   if(service){const s=document.getElementById('serviceSelectM');for(let i=0;i<s.options.length;i++){if(s.options[i].value.startsWith(service)){s.selectedIndex=i;break;}}}
 }
-function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow='';
+  if(activePolling.modal){clearInterval(activePolling.modal);activePolling.modal=null;}
+}
 document.getElementById('modalOverlay').addEventListener('click',e=>{if(e.target===document.getElementById('modalOverlay'))closeModal();});
 
 const navbar=document.getElementById('navbar');
@@ -1489,7 +1651,7 @@ const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersec
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
 // ─────────────────────────────────────────────
-// INIT — carrega bookings do storage compartilhado
+// INIT
 // ─────────────────────────────────────────────
 (async()=>{
   await loadBookings();
