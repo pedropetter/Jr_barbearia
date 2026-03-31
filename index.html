@@ -1053,6 +1053,17 @@ function todayStr() {
   return `${y}-${m}-${d}`;
 }
 
+function currentTimeStr() {
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2, '0');
+  const m = String(now.getMinutes()).padStart(2, '0');
+  return `${h}:${m}`;
+}
+
+function isSlotExpired(dateStr, slot) {
+  return dateStr === todayStr() && slot < currentTimeStr();
+}
+
 // ─────────────────────────────────────────────
 // BOOKINGS
 //
@@ -1637,11 +1648,13 @@ function renderSlots(dateStr,areaId,onSel,y,m,d,silent=false){
   const grid=document.createElement('div');grid.className='slots-grid';
   slots.forEach(slot=>{
     const taken = isSlotTaken(dateStr, slot);
+    const expired = isSlotExpired(dateStr, slot);
+    const blocked = taken || expired;
     const div=document.createElement('div');
-    div.className='slot'+(taken?' slot-taken':'');
-    if(!taken && slot===currentSelected) div.classList.add('slot-selected');
+    div.className='slot'+(blocked?' slot-taken':'');
+    if(!blocked && slot===currentSelected) div.classList.add('slot-selected');
     div.textContent=slot;div.dataset.slot=slot;
-    if(!taken)div.addEventListener('click',()=>onSel(slot));
+    if(!blocked)div.addEventListener('click',()=>onSel(slot));
     grid.appendChild(div);
   });
 
@@ -1667,7 +1680,7 @@ async function confirmBooking(){
     bookings = purgeOldDates(await readStoredBookings());
   } catch(e){}
 
-  if(isSlotTaken(selDate, selSlot)){
+  if(isSlotTaken(selDate, selSlot) || isSlotExpired(selDate, selSlot)){
     showToast('❌ Esse horário acabou de ser reservado! Escolha outro.',3500);
     const pts=selDate.split('-');
     await refreshAndRenderSlots(selDate,'slotsArea',onSlotMain,+pts[0],+pts[1]-1,+pts[2]);
@@ -1717,7 +1730,7 @@ async function confirmBookingModal(){
     bookings = purgeOldDates(await readStoredBookings());
   } catch(e){}
 
-  if(isSlotTaken(selDateM, selSlotM)){
+  if(isSlotTaken(selDateM, selSlotM) || isSlotExpired(selDateM, selSlotM)){
     showToast('❌ Esse horário acabou de ser reservado! Escolha outro.',3500);
     const pts=selDateM.split('-');
     await refreshAndRenderSlots(selDateM,'slotsAreaM',onSlotMod,+pts[0],+pts[1]-1,+pts[2]);
