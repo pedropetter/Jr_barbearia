@@ -1074,6 +1074,9 @@ function todayStr() {
 // também sincroniza com `window.storage`.
 // ─────────────────────────────────────────────
 const STORAGE_KEY = 'jr_bookings_v3';
+const SUPABASE_URL = 'https://pjxromopwfqfhquommsv.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBqeHJvbW9wd2ZxZmhxdW9tbXN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5Nzg0NjIsImV4cCI6MjA5MDU1NDQ2Mn0.cNWkAE3_L41fipd-5GtXjtQUTqO19FnSEFoAficidmY';
+const SUPABASE_TABLE = 'bookings';
 
 // Cache local (objeto aninhado: data → {slot → dados})
 let bookings = {};
@@ -1085,6 +1088,71 @@ function hasSharedStorage() {
     typeof window.storage.get === 'function' &&
     typeof window.storage.set === 'function'
   );
+}
+
+function hasSupabaseConfig() {
+  return (
+    SUPABASE_URL &&
+    SUPABASE_ANON_KEY &&
+    !SUPABASE_URL.includes('COLE_AQUI') &&
+    !SUPABASE_ANON_KEY.includes('COLE_AQUI')
+  );
+}
+
+function supabaseHeaders(extra = {}) {
+  return {
+    apikey: SUPABASE_ANON_KEY,
+    Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+    'Content-Type': 'application/json',
+    ...extra,
+  };
+}
+
+function rowsToBookings(rows) {
+  const mapped = {};
+  rows.forEach(row => {
+    if (!mapped[row.booking_date]) mapped[row.booking_date] = {};
+    mapped[row.booking_date][row.slot] = {
+      name: row.name,
+      phone: row.phone,
+      service: row.service,
+    };
+  });
+  return mapped;
+}
+
+async function readSupabaseBookings() {
+  const url = `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?select=booking_date,slot,name,phone,service&booking_date=gte.${todayStr()}&order=booking_date.asc,slot.asc`;
+  const response = await fetch(url, {
+    method: 'GET',
+    headers: supabaseHeaders(),
+  });
+  if (!response.ok) {
+    throw new Error(`Supabase read error: ${response.status}`);
+  }
+  return rowsToBookings(await response.json());
+}
+
+async function insertSupabaseBooking(dateStr, slot, data) {
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}`, {
+    method: 'POST',
+    headers: supabaseHeaders({ Prefer: 'return=minimal' }),
+    body: JSON.stringify([{
+      booking_date: dateStr,
+      slot,
+      name: data.name,
+      phone: data.phone,
+      service: data.service,
+    }]),
+  });
+
+  if (response.ok) {
+    return { ok: true };
+  }
+
+  const errorText = await response.text();
+  const isConflict = response.status === 409 || errorText.includes('duplicate key');
+  return { ok: false, conflict: isConflict, errorText };
 }
 
 function readLocalBookings() {
@@ -1106,6 +1174,11 @@ function writeLocalBookings(data) {
 }
 
 async function readStoredBookings() {
+  if (hasSupabaseConfig()) {
+    const remote = await readSupabaseBookings();
+    writeLocalBookings(remote);
+    return remote;
+  }
   if (hasSharedStorage()) {
     const result = await window.storage.get(STORAGE_KEY, true);
     if (result && result.value) {
@@ -1119,6 +1192,9 @@ async function readStoredBookings() {
 
 async function writeStoredBookings(data) {
   writeLocalBookings(data);
+  if (hasSupabaseConfig()) {
+    return;
+  }
   if (hasSharedStorage()) {
     await window.storage.set(STORAGE_KEY, JSON.stringify(data), true);
   }
@@ -1137,22 +1213,22 @@ function purgeOldDates(data) {
 }
 
 async function loadBookings() {
-  setSyncStatus('syncing', 'Sincronizando horários...');
+  setSyncStatus('syncing', hasSupabaseConfig() ? 'Sincronizando com agenda online...' : 'Carregando horários...');
   try {
     const raw = await readStoredBookings();
     const cleaned = purgeOldDates(raw);
     bookings = cleaned;
     const removedCount = Object.keys(raw).length - Object.keys(cleaned).length;
-    if (removedCount > 0) {
+    if (removedCount > 0 && !hasSupabaseConfig()) {
       await writeStoredBookings(cleaned);
     }
     storageReady = true;
-    setSyncStatus('synced', 'Horários sincronizados ✓');
+    setSyncStatus('synced', hasSupabaseConfig() ? 'Agenda online conectada ✓' : 'Horários carregados neste aparelho ✓');
   } catch (err) {
     bookings = purgeOldDates(readLocalBookings());
     writeLocalBookings(bookings);
     storageReady = true;
-    setSyncStatus('synced', 'Horários carregados ✓');
+    setSyncStatus('error', hasSupabaseConfig() ? 'Falha ao conectar agenda online' : 'Agenda local carregada neste aparelho');
   }
 }
 
@@ -1172,6 +1248,23 @@ async function saveBooking(dateStr, slot, data) {
     setSyncStatus('error', 'Erro ao sincronizar — tente novamente');
     console.error('Storage error:', err);
   }
+}
+
+async function reserveBooking(dateStr, slot, data) {
+  if (hasSupabaseConfig()) {
+    const result = await insertSupabaseBooking(dateStr, slot, data);
+    if (!result.ok) {
+      if (result.conflict) return { ok: false, conflict: true };
+      throw new Error(result.errorText || 'Erro ao salvar no Supabase');
+    }
+    bookings = purgeOldDates(await readStoredBookings());
+    writeLocalBookings(bookings);
+    setSyncStatus('synced', 'Horário salvo na agenda online ✓');
+    return { ok: true };
+  }
+
+  await saveBooking(dateStr, slot, data);
+  return { ok: true };
 }
 
 // Recarrega os bookings do storage antes de mostrar os slots
@@ -1584,7 +1677,22 @@ async function confirmBooking(){
     return;
   }
 
-  await saveBooking(selDate, selSlot, {name, phone, service});
+  try {
+    const result = await reserveBooking(selDate, selSlot, {name, phone, service});
+    if(!result.ok && result.conflict){
+      showToast('❌ Esse horário acabou de ser reservado! Escolha outro.',3500);
+      const pts=selDate.split('-');
+      await refreshAndRenderSlots(selDate,'slotsArea',onSlotMain,+pts[0],+pts[1]-1,+pts[2]);
+      selSlot=null;
+      document.getElementById('bookingForm').classList.remove('show');
+      document.getElementById('resumoAgendamento').style.display='none';
+      return;
+    }
+  } catch (err) {
+    console.error(err);
+    showToast('Erro ao salvar agendamento. Tente novamente.',3500);
+    return;
+  }
 
   document.getElementById('bookingForm').classList.remove('show');
   document.getElementById('bookingSuccess').classList.add('show');
@@ -1619,7 +1727,22 @@ async function confirmBookingModal(){
     return;
   }
 
-  await saveBooking(selDateM, selSlotM, {name, phone, service});
+  try {
+    const result = await reserveBooking(selDateM, selSlotM, {name, phone, service});
+    if(!result.ok && result.conflict){
+      showToast('❌ Esse horário acabou de ser reservado! Escolha outro.',3500);
+      const pts=selDateM.split('-');
+      await refreshAndRenderSlots(selDateM,'slotsAreaM',onSlotMod,+pts[0],+pts[1]-1,+pts[2]);
+      selSlotM=null;
+      const r=document.getElementById('resumoAgendamentoM');
+      if(r) r.style.display='none';
+      return;
+    }
+  } catch (err) {
+    console.error(err);
+    showToast('Erro ao salvar agendamento. Tente novamente.',3500);
+    return;
+  }
 
   document.getElementById('bookingSuccessM').classList.add('show');
   const dt=new Date(selDateM+'T12:00:00');
