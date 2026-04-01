@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jr_barbearia – Dianópolis, TO</title>
+<title>Jr_barbearia - Dianópolis, TO</title>
 <meta name="description" content="Jr_barbearia em Dianópolis-TO. Cortes masculinos, barba, sinuca e cerveja gelada. Loja de produtos premium.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -39,7 +39,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 ::-webkit-scrollbar-track{background:var(--black);}
 ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:0;}
 
-/* ── NAV ── */
+/* â”€â”€ NAV â”€â”€ */
 nav{position:fixed;top:0;left:0;right:0;z-index:900;padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:68px;transition:all .4s;}
 nav.scrolled{background:rgba(8,8,7,.97);border-bottom:1px solid var(--gold-border);backdrop-filter:blur(20px);}
 .nav-logo{font-family:var(--display);font-size:1.1rem;color:var(--white);text-decoration:none;letter-spacing:4px;display:flex;align-items:center;gap:10px;}
@@ -57,7 +57,7 @@ nav.scrolled{background:rgba(8,8,7,.97);border-bottom:1px solid var(--gold-borde
 .cart-count{position:absolute;top:-6px;right:-6px;background:var(--gold);color:var(--black);width:18px;height:18px;border-radius:50%;font-family:var(--sans);font-size:.58rem;font-weight:600;display:none;align-items:center;justify-content:center;}
 .cart-count.has-items{display:flex;}
 
-/* ── HERO ── */
+/* â”€â”€ HERO â”€â”€ */
 #hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 70% 50%,rgba(200,168,75,.06) 0%,transparent 70%),linear-gradient(160deg,#080807 0%,#0e0c08 55%,#08070a 100%);}
 .hero-lines{position:absolute;inset:0;pointer-events:none;}
@@ -66,18 +66,18 @@ nav.scrolled{background:rgba(8,8,7,.97);border-bottom:1px solid var(--gold-borde
 .hero-content{position:relative;z-index:2;padding:120px 5% 80px;max-width:800px;}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:var(--sans);font-size:.65rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:28px;opacity:0;animation:fadeUp .8s .15s forwards;font-weight:400;}
 .hero-eyebrow i{width:36px;height:1px;background:var(--gold-dim);display:block;}
-.hero-title{font-family:var(--display);font-size:clamp(3.5rem,9vw,8rem);line-height:.92;letter-spacing:4px;margin-bottom:24px;opacity:0;animation:fadeUp .8s .3s forwards;font-weight:700;}
+.hero-title{font-family:var(--display);font-size:clamp(2.7rem,6.8vw,6.1rem);line-height:.96;letter-spacing:3px;margin-bottom:24px;opacity:0;animation:fadeUp .8s .3s forwards;font-weight:700;max-width:720px;}
 .hero-title em{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:.82em;letter-spacing:0;display:block;font-weight:400;text-shadow:0 0 80px rgba(200,168,75,.3);}
 .hero-sub{font-family:var(--body);font-style:italic;font-size:clamp(1.05rem,1.5vw,1.2rem);color:var(--white-dim);line-height:1.9;max-width:460px;margin-bottom:44px;opacity:0;animation:fadeUp .8s .45s forwards;font-weight:300;}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fadeUp .8s .6s forwards;}
-.hero-stats{display:flex;margin-top:64px;opacity:0;animation:fadeUp .8s .75s forwards;}
-.stat{padding:20px 32px;text-align:center;border:1px solid var(--gold-border);border-right:none;}
+.hero-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:64px;opacity:0;animation:fadeUp .8s .75s forwards;}
+.stat{min-width:0;padding:20px 24px;text-align:center;border:1px solid var(--gold-border);}
 .stat:first-child{border-left:1px solid var(--gold-border);}
 .stat:last-child{border-right:1px solid var(--gold-border);}
 .stat-num{font-family:var(--display);font-size:2rem;color:var(--gold);line-height:1;letter-spacing:2px;}
 .stat-label{font-family:var(--sans);font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--white-dim);margin-top:5px;font-weight:400;}
 
-/* ── BUTTONS ── */
+/* â”€â”€ BUTTONS â”€â”€ */
 .btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--black);font-family:var(--sans);font-weight:600;font-size:.68rem;letter-spacing:3px;text-transform:uppercase;padding:14px 30px;border:none;cursor:pointer;text-decoration:none;transition:all .3s;user-select:none;}
 .btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 28px rgba(200,168,75,.3);}
 .btn-outline{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--white);font-family:var(--sans);font-size:.68rem;letter-spacing:3px;text-transform:uppercase;padding:13px 28px;border:1px solid rgba(245,241,235,.2);cursor:pointer;text-decoration:none;transition:all .3s;position:relative;overflow:hidden;}
@@ -88,19 +88,19 @@ nav.scrolled{background:rgba(8,8,7,.97);border-bottom:1px solid var(--gold-borde
 .btn-gold{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--gold);font-family:var(--sans);font-size:.68rem;letter-spacing:3px;text-transform:uppercase;padding:12px 22px;border:1px solid var(--gold-border);cursor:pointer;text-decoration:none;transition:all .3s;font-weight:400;}
 .btn-gold:hover{background:var(--gold);color:var(--black);}
 
-/* ── SECTION ── */
+/* â”€â”€ SECTION â”€â”€ */
 section{padding:100px 5%;}
 .section-eyebrow{font-family:var(--sans);font-size:.62rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:14px;font-weight:500;}
 .section-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold-dim);}
 .section-title{font-family:var(--display);font-size:clamp(2.4rem,5vw,4.2rem);letter-spacing:3px;line-height:.92;margin-bottom:20px;font-weight:700;}
 .section-title em{font-family:var(--serif);font-style:italic;color:var(--gold);font-weight:400;}
 
-/* ── DIVIDER ── */
-.hr-deco{display:flex;align-items:center;gap:24px;padding:0 5%;}
+/* â”€â”€ DIVIDER â”€â”€ */
+.hr-deco{display:flex;align-items:center;gap:24px;flex-wrap:wrap;padding:0 5%;}
 .hr-line{flex:1;height:1px;background:var(--gold-border);}
 .hr-mark{font-family:var(--serif);font-style:italic;font-size:.8rem;color:var(--gold-dim);letter-spacing:4px;}
 
-/* ── SOBRE ── */
+/* â”€â”€ SOBRE â”€â”€ */
 #sobre{background:var(--black-2);position:relative;overflow:hidden;}
 #sobre::after{content:'BARBA';position:absolute;bottom:-60px;right:-20px;font-family:var(--display);font-size:22rem;color:rgba(200,168,75,.025);pointer-events:none;letter-spacing:-2px;font-weight:700;}
 .sobre-wrap{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
@@ -108,7 +108,7 @@ section{padding:100px 5%;}
 .barber-art{width:100%;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;}
 .barber-art svg{width:80%;height:auto;}
 .sobre-frame-lbl{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(8,8,7,.98));padding:28px 22px 20px;font-family:var(--sans);font-size:.62rem;letter-spacing:4px;text-transform:uppercase;color:var(--white-dim);}
-.badge-float{position:absolute;top:24px;right:-18px;background:var(--gold);padding:18px 16px;text-align:center;box-shadow:0 10px 40px rgba(200,168,75,.3);}
+.badge-float{position:absolute;top:20px;right:20px;background:var(--gold);padding:18px 16px;text-align:center;box-shadow:0 10px 40px rgba(200,168,75,.3);z-index:2;}
 .badge-float .b-n{font-family:var(--display);font-size:1.8rem;line-height:1;color:var(--black);font-weight:700;}
 .badge-float .b-l{font-family:var(--sans);font-size:.52rem;letter-spacing:2px;text-transform:uppercase;margin-top:3px;color:var(--black);opacity:.75;font-weight:500;}
 .sobre-text p{color:var(--white-dim);line-height:1.9;margin-bottom:16px;font-family:var(--body);font-size:1.08rem;font-weight:300;}
@@ -117,7 +117,7 @@ section{padding:100px 5%;}
 .pill:hover{border-color:var(--gold-border);color:var(--gold);}
 .pill.gold{border-color:var(--gold-border);color:var(--gold);}
 
-/* ── AMBIENCE ── */
+/* â”€â”€ AMBIENCE â”€â”€ */
 #ambience{background:var(--black);padding:80px 5%;}
 .amb-wrap{max-width:1200px;margin:0 auto;}
 .amb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--gold-border);margin-top:52px;}
@@ -129,7 +129,7 @@ section{padding:100px 5%;}
 .amb-title{font-family:var(--display);font-size:1.2rem;letter-spacing:3px;margin-bottom:12px;color:var(--white);}
 .amb-desc{color:var(--white-dim);font-size:.95rem;line-height:1.75;font-family:var(--body);font-weight:300;}
 
-/* ── SERVIÇOS ── */
+/* â”€â”€ SERVIÃ‡OS â”€â”€ */
 #servicos{background:var(--black-2);}
 .svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--gold-border);max-width:1200px;margin:52px auto 0;}
 .svc-card{background:var(--black-3);padding:0;position:relative;overflow:hidden;transition:background .3s;cursor:pointer;}
@@ -149,7 +149,7 @@ section{padding:100px 5%;}
 .btn-svc:hover{color:var(--black);}
 .btn-svc:hover::before{transform:scaleX(1);}
 
-/* ── LOJA ── */
+/* â”€â”€ LOJA â”€â”€ */
 #loja{background:var(--black);position:relative;overflow:hidden;}
 #loja::before{content:'SHOP';position:absolute;bottom:-80px;left:-20px;font-family:var(--display);font-size:22rem;color:rgba(200,168,75,.02);pointer-events:none;letter-spacing:0;font-weight:700;}
 .loja-intro{max-width:1200px;margin:0 auto 52px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;}
@@ -179,7 +179,7 @@ section{padding:100px 5%;}
 .btn-add{background:transparent;color:var(--gold);border:1px solid var(--gold-border);padding:8px 14px;cursor:pointer;font-family:var(--sans);font-size:.6rem;letter-spacing:2px;text-transform:uppercase;transition:all .2s;display:flex;align-items:center;gap:5px;font-weight:400;}
 .btn-add:hover{background:var(--gold);color:var(--black);}
 
-/* ── AVALIAÇÕES ── */
+/* â”€â”€ AVALIAÃ‡Ã•ES â”€â”€ */
 #avaliacoes{background:var(--black-2);}
 .rating-wrap{max-width:1200px;margin:0 auto;}
 .rating-header{display:flex;align-items:center;gap:56px;padding:36px 40px;border:1px solid var(--gold-border);background:var(--black-3);flex-wrap:wrap;margin-bottom:1px;}
@@ -198,7 +198,7 @@ section{padding:100px 5%;}
 .depo-meta{font-family:var(--sans);font-size:.6rem;letter-spacing:1px;color:var(--white-dim);margin-top:2px;font-weight:300;}
 .depo-stars{font-size:.65rem;color:var(--gold);margin-top:3px;}
 
-/* ── BOOKING ── */
+/* â”€â”€ BOOKING â”€â”€ */
 #agendamento{background:var(--black-3);position:relative;overflow:hidden;}
 #agendamento::after{content:'RESERVAR';position:absolute;bottom:-80px;right:-20px;font-family:var(--display);font-size:18rem;color:rgba(200,168,75,.025);pointer-events:none;font-weight:700;}
 .booking-wrap{max-width:1100px;margin:0 auto;}
@@ -245,9 +245,14 @@ section{padding:100px 5%;}
 .success-title{font-family:var(--display);font-size:1.7rem;letter-spacing:4px;color:var(--gold);margin-bottom:8px;font-weight:700;}
 .success-text{color:var(--white-dim);font-size:.88rem;line-height:1.7;font-family:var(--body);font-style:italic;}
 
-/* ── CONTATO ── */
+/* â”€â”€ CONTATO â”€â”€ */
 #contato{background:var(--black-2);}
 .contato-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;max-width:1200px;margin:52px auto 0;align-items:start;}
+.contato-lead{max-width:620px;margin-top:14px;color:var(--white-dim);font-family:var(--body);font-size:1.08rem;line-height:1.9;font-style:italic;}
+.contato-card{background:linear-gradient(180deg,rgba(200,168,75,.08),rgba(255,255,255,.02));border:1px solid var(--gold-border);padding:24px 24px 22px;margin-bottom:28px;box-shadow:0 20px 50px rgba(0,0,0,.2);}
+.contato-card-kicker{font-family:var(--sans);font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:500;}
+.contato-card-title{font-family:var(--display);font-size:1.6rem;letter-spacing:2px;line-height:1.05;margin-bottom:12px;}
+.contato-card-text{color:var(--white-dim);font-family:var(--body);font-size:1rem;line-height:1.8;}
 .c-item{display:flex;align-items:flex-start;gap:18px;margin-bottom:28px;}
 .c-ico{width:44px;height:44px;border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;transition:all .2s;}
 .c-item:hover .c-ico{border-color:var(--gold);}
@@ -264,7 +269,7 @@ section{padding:100px 5%;}
 .map-label{font-family:var(--sans);font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--white-dim);font-weight:400;}
 .map-sub{font-family:var(--sans);font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:400;}
 
-/* ── FOOTER ── */
+/* â”€â”€ FOOTER â”€â”€ */
 footer{background:var(--black);border-top:1px solid var(--gold-border);padding:52px 5% 28px;}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:52px;max-width:1200px;margin:0 auto 32px;}
 .footer-logo{font-family:var(--display);font-size:1.5rem;color:var(--white);display:inline-block;margin-bottom:12px;text-decoration:none;letter-spacing:4px;font-weight:700;}
@@ -276,7 +281,7 @@ footer{background:var(--black);border-top:1px solid var(--gold-border);padding:5
 .footer-links a:hover{color:var(--gold);}
 .footer-bottom{max-width:1200px;margin:0 auto;padding-top:24px;border-top:1px solid var(--gold-border);display:flex;justify-content:space-between;align-items:center;font-size:.65rem;color:var(--white-dim);flex-wrap:wrap;gap:8px;font-family:var(--sans);letter-spacing:2px;}
 
-/* ── FLOATING ACTIONS ── */
+/* â”€â”€ FLOATING ACTIONS â”€â”€ */
 .floating-actions{position:fixed;right:28px;bottom:28px;z-index:890;display:flex;flex-direction:column;align-items:flex-end;gap:12px;}
 .float-btn{position:relative;width:58px;height:58px;border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;cursor:pointer;transition:transform .3s,box-shadow .3s,background .3s;box-shadow:0 10px 28px rgba(0,0,0,.26);}
 .float-btn:hover{transform:scale(1.08) translateY(-3px);}
@@ -290,7 +295,7 @@ footer{background:var(--black);border-top:1px solid var(--gold-border);padding:5
 .wa-float:hover{box-shadow:0 10px 32px rgba(37,211,102,.5);animation:none;}
 .wa-float svg{fill:#fff;}
 
-/* ── CART PANEL ── */
+/* â”€â”€ CART PANEL â”€â”€ */
 .cart-overlay{display:none;position:fixed;inset:0;z-index:950;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);}
 .cart-overlay.open{display:block;}
 .cart-panel{position:fixed;right:0;top:0;bottom:0;width:420px;max-width:100vw;background:var(--black-2);border-left:1px solid var(--gold-border);z-index:960;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);}
@@ -320,7 +325,7 @@ footer{background:var(--black);border-top:1px solid var(--gold-border);padding:5
 .btn-checkout{width:100%;padding:15px;background:var(--gold);color:var(--black);font-family:var(--display);font-size:1rem;letter-spacing:4px;border:none;cursor:pointer;transition:background .25s;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:700;}
 .btn-checkout:hover{background:var(--gold-light);}
 
-/* ── CHECKOUT MODAL ── */
+/* â”€â”€ CHECKOUT MODAL â”€â”€ */
 .checkout-overlay{display:none;position:fixed;inset:0;z-index:970;background:rgba(0,0,0,.88);backdrop-filter:blur(14px);align-items:center;justify-content:center;padding:20px;}
 .checkout-overlay.open{display:flex;}
 .checkout-modal{background:var(--black-2);border:1px solid var(--gold-border);width:100%;max-width:600px;max-height:90vh;overflow-y:auto;position:relative;}
@@ -361,7 +366,7 @@ footer{background:var(--black);border-top:1px solid var(--gold-border);padding:5
 .btn-whatsapp-comp{width:100%;padding:14px;background:#25D366;color:#fff;font-family:var(--display);font-size:1rem;letter-spacing:3px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .2s;font-weight:700;}
 .btn-whatsapp-comp:hover{background:#1EB85A;}
 
-/* ── DETAIL MODAL ── */
+/* â”€â”€ DETAIL MODAL â”€â”€ */
 .detail-overlay{display:none;position:fixed;inset:0;z-index:990;background:rgba(0,0,0,.9);backdrop-filter:blur(16px);align-items:center;justify-content:center;padding:20px;}
 .detail-overlay.open{display:flex;}
 .detail-modal{background:var(--black-2);border:1px solid var(--gold-border);max-width:780px;width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:fadeUp .3s;}
@@ -377,10 +382,10 @@ footer{background:var(--black);border-top:1px solid var(--gold-border);padding:5
 .detail-desc{color:var(--white-dim);font-family:var(--body);font-size:1rem;line-height:1.85;margin-bottom:24px;}
 .detail-features{margin-bottom:24px;}
 .detail-feature{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;font-family:var(--sans);font-size:.78rem;color:var(--white-dim);letter-spacing:.5px;font-weight:300;}
-.detail-feature::before{content:'—';color:var(--gold);flex-shrink:0;}
+.detail-feature::before{content:'-';color:var(--gold);flex-shrink:0;}
 .detail-actions{display:flex;gap:10px;flex-wrap:wrap;}
 
-/* ── MODAL AGENDAMENTO ── */
+/* â”€â”€ MODAL AGENDAMENTO â”€â”€ */
 .modal-overlay{display:none;position:fixed;inset:0;z-index:980;background:rgba(0,0,0,.9);backdrop-filter:blur(14px);align-items:center;justify-content:center;padding:20px;}
 .modal-overlay.open{display:flex;}
 .modal{background:var(--black-3);border:1px solid var(--gold-border);max-width:900px;width:100%;max-height:90vh;overflow-y:auto;padding:40px;position:relative;animation:fadeUp .35s;}
@@ -511,6 +516,41 @@ nav.scrolled{
 .hero-stats{
   gap:14px;
   flex-wrap:wrap;
+}
+.hero-signals{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+  margin-top:22px;
+  max-width:760px;
+  opacity:0;
+  animation:fadeUp .8s .68s forwards;
+}
+.hero-signal{
+  padding:18px 20px;
+  border:1px solid rgba(200,168,75,.14);
+  border-radius:22px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.035), transparent 30%),
+    linear-gradient(180deg, rgba(16,15,13,.9), rgba(10,10,9,.82));
+  box-shadow:0 24px 60px rgba(0,0,0,.18);
+}
+.hero-signal strong{
+  display:block;
+  font-family:var(--body);
+  font-size:1rem;
+  font-weight:400;
+  line-height:1.45;
+  color:var(--white);
+}
+.hero-signal-kicker{
+  display:inline-block;
+  margin-bottom:8px;
+  font-family:var(--sans);
+  font-size:.56rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--gold-light);
 }
 .stat{
   min-width:148px;
@@ -661,6 +701,161 @@ nav.scrolled{
   padding:8px 14px;
   background:rgba(255,255,255,.03);
 }
+.booking-premium-band{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+  margin:0 0 34px;
+}
+.booking-band-card{
+  padding:22px 22px 20px;
+  border:1px solid rgba(200,168,75,.14);
+  border-radius:24px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.035), transparent 26%),
+    linear-gradient(180deg, rgba(17,16,14,.98), rgba(9,9,8,.94));
+  box-shadow:0 26px 60px rgba(0,0,0,.18);
+}
+.booking-band-kicker{
+  display:inline-block;
+  margin-bottom:10px;
+  font-family:var(--sans);
+  font-size:.56rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--gold-light);
+}
+.booking-band-card strong{
+  display:block;
+  margin-bottom:8px;
+  font-family:var(--serif);
+  font-size:1.08rem;
+  font-weight:600;
+  color:var(--white);
+}
+.booking-band-card p{
+  color:var(--white-dim);
+  font-family:var(--body);
+  font-size:.98rem;
+  line-height:1.65;
+}
+.booking-side-shell{
+  margin-bottom:22px;
+  padding:22px;
+  border:1px solid rgba(200,168,75,.14);
+  border-radius:28px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.035), transparent 25%),
+    linear-gradient(180deg, rgba(17,16,14,.98), rgba(10,10,9,.95));
+  box-shadow:0 26px 62px rgba(0,0,0,.2);
+}
+.booking-side-sub{
+  margin-top:4px;
+  color:var(--white-dim);
+  font-family:var(--body);
+  font-size:1rem;
+  line-height:1.55;
+}
+.service-picks{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+}
+.service-pick{
+  padding:12px 14px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.09);
+  background:rgba(255,255,255,.02);
+  color:var(--white);
+  font-family:var(--sans);
+  font-size:.7rem;
+  letter-spacing:2.2px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:all .25s;
+}
+.service-pick:hover,
+.service-pick.active{
+  border-color:rgba(200,168,75,.28);
+  background:rgba(200,168,75,.08);
+  color:var(--gold-light);
+  transform:translateY(-2px);
+}
+.service-pick.featured{
+  background:linear-gradient(135deg, rgba(200,168,75,.18), rgba(200,168,75,.08));
+}
+.service-spotlight{
+  margin-top:14px;
+  padding:18px;
+  border:1px solid rgba(200,168,75,.12);
+  border-radius:22px;
+  background:rgba(255,255,255,.02);
+}
+.service-spotlight.compact{margin-top:0;}
+.service-spotlight-empty{
+  color:var(--white-dim);
+  font-family:var(--body);
+  font-size:.98rem;
+  line-height:1.6;
+}
+.service-spotlight-top{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:10px;
+}
+.service-spotlight-name{
+  font-family:var(--display);
+  font-size:1.2rem;
+  letter-spacing:2px;
+  color:var(--white);
+}
+.service-spotlight-price{
+  font-family:var(--display);
+  font-size:1.6rem;
+  color:var(--gold-light);
+  line-height:1;
+}
+.service-spotlight-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:12px;
+}
+.service-meta-chip{
+  padding:7px 12px;
+  border-radius:999px;
+  border:1px solid rgba(200,168,75,.14);
+  background:rgba(255,255,255,.03);
+  color:var(--white-dim);
+  font-family:var(--sans);
+  font-size:.58rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+.service-spotlight-desc{
+  color:var(--white-dim);
+  font-family:var(--body);
+  font-size:1rem;
+  line-height:1.7;
+  margin-bottom:10px;
+}
+.service-spotlight-features{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.service-feature-chip{
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(200,168,75,.08);
+  color:var(--gold-light);
+  font-family:var(--sans);
+  font-size:.55rem;
+  letter-spacing:1.6px;
+  text-transform:uppercase;
+}
 #calendar,#calendarModal{
   border-radius:30px;
   overflow:hidden;
@@ -796,9 +991,334 @@ footer{
   backdrop-filter:blur(18px);
 }
 
+.hero-stage{
+  position:relative;
+  z-index:2;
+  width:min(1280px,100%);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 360px;
+  gap:44px;
+  align-items:start;
+  padding:120px 5% 80px;
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+  padding:0;
+  max-width:800px;
+}
+.hero-side{
+  position:relative;
+  min-width:0;
+  opacity:0;
+  animation:fadeUp .8s .9s forwards;
+}
+.hero-plaque{
+  position:relative;
+  overflow:hidden;
+  padding:28px 28px 26px;
+  border:1px solid rgba(200,168,75,.18);
+  border-radius:30px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.03), transparent 20%),
+    linear-gradient(180deg, rgba(17,16,14,.98), rgba(10,10,9,.96));
+  box-shadow:0 28px 80px rgba(0,0,0,.34);
+}
+.hero-plaque::before{
+  content:'';
+  position:absolute;
+  inset:14px;
+  border:1px solid rgba(200,168,75,.08);
+  border-radius:22px;
+  pointer-events:none;
+}
+.hero-plaque::after{
+  content:'';
+  position:absolute;
+  right:-36px;
+  bottom:-54px;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(200,168,75,.16), transparent 68%);
+  pointer-events:none;
+}
+.hero-plaque-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:16px;
+  margin-bottom:18px;
+  font-family:var(--sans);
+  font-size:.58rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.hero-plaque-top span:last-child{color:var(--white-dim);}
+.hero-plaque-title{
+  max-width:240px;
+  margin-bottom:14px;
+  font-family:var(--display);
+  font-size:clamp(1.8rem,3vw,2.3rem);
+  line-height:1.02;
+  letter-spacing:2px;
+}
+.hero-plaque-text{
+  max-width:290px;
+  margin-bottom:22px;
+  color:var(--white-dim);
+  font-family:var(--body);
+  font-size:1rem;
+  line-height:1.85;
+}
+.hero-tool-row{
+  display:grid;
+  gap:10px;
+  margin-bottom:22px;
+}
+.hero-tool{
+  display:grid;
+  grid-template-columns:38px 1fr;
+  gap:12px;
+  align-items:center;
+  padding:11px 12px;
+  border:1px solid rgba(245,241,235,.08);
+  border-radius:18px;
+  background:rgba(255,255,255,.03);
+}
+.hero-tool svg{
+  width:26px;
+  height:26px;
+  stroke:var(--gold);
+  fill:none;
+}
+.hero-tool strong{
+  display:block;
+  font-family:var(--sans);
+  font-size:.66rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--white);
+  font-weight:500;
+}
+.hero-tool span{
+  display:block;
+  margin-top:2px;
+  color:var(--white-dim);
+  font-family:var(--body);
+  font-size:.92rem;
+}
+.hero-code{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  padding-top:18px;
+  border-top:1px solid rgba(200,168,75,.12);
+  color:var(--white-dim);
+  font-family:var(--sans);
+  font-size:.63rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+.hero-code strong{color:var(--gold-light);font-weight:500;}
+.hero-seal{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  width:fit-content;
+  max-width:100%;
+  margin-top:16px;
+  padding:12px 14px;
+  border:1px solid rgba(200,168,75,.18);
+  border-radius:18px;
+  background:rgba(8,8,7,.96);
+  box-shadow:0 18px 40px rgba(0,0,0,.28);
+}
+.hero-seal-mark{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:46px;
+  height:46px;
+  border:1px solid rgba(200,168,75,.24);
+  border-radius:50%;
+  color:var(--gold);
+  font-family:var(--display);
+  font-size:1rem;
+  letter-spacing:1px;
+}
+.hero-seal div{
+  color:var(--white-dim);
+  font-family:var(--sans);
+  font-size:.62rem;
+  letter-spacing:2px;
+  line-height:1.6;
+  text-transform:uppercase;
+  min-width:0;
+}
+.hero-seal strong{
+  display:block;
+  color:var(--white);
+  font-weight:500;
+}
+.hr-mark{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:8px 18px;
+  border:1px solid rgba(200,168,75,.16);
+  border-radius:999px;
+  background:linear-gradient(180deg, rgba(200,168,75,.06), rgba(255,255,255,.02));
+  box-shadow:0 14px 30px rgba(0,0,0,.16);
+}
+.hr-mark::before,.hr-mark::after{
+  content:'';
+  width:6px;
+  height:6px;
+  background:rgba(200,168,75,.4);
+  transform:rotate(45deg);
+}
+.sobre-frame{
+  box-shadow:0 26px 70px rgba(0,0,0,.32);
+}
+.sobre-frame::before{
+  content:'';
+  position:absolute;
+  inset:18px;
+  border:1px solid rgba(200,168,75,.08);
+  pointer-events:none;
+}
+.signature-strip{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:34px;
+}
+.signature-card{
+  position:relative;
+  overflow:hidden;
+  min-height:100%;
+  padding:22px 20px 20px;
+  border:1px solid rgba(200,168,75,.15);
+  border-radius:24px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.03), transparent 28%),
+    linear-gradient(180deg, rgba(17,16,14,.98), rgba(10,10,9,.96));
+}
+.signature-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:1px;
+  background:rgba(200,168,75,.5);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .35s;
+}
+.signature-card:hover::before{transform:scaleX(1);}
+.signature-card strong{
+  display:block;
+  margin-bottom:12px;
+  color:var(--gold);
+  font-family:var(--sans);
+  font-size:.6rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.signature-card h3{
+  margin-bottom:10px;
+  font-family:var(--display);
+  font-size:1.05rem;
+  letter-spacing:2px;
+}
+.signature-card p{
+  color:var(--white-dim);
+  font-family:var(--body);
+  font-size:.95rem;
+  line-height:1.75;
+}
+.contato-ritual{
+  position:relative;
+  overflow:hidden;
+  padding:26px 24px;
+  margin-bottom:22px;
+  border:1px solid rgba(200,168,75,.15);
+  border-radius:30px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.03), transparent 24%),
+    linear-gradient(180deg, rgba(17,16,14,.98), rgba(10,10,9,.96));
+  box-shadow:0 24px 60px rgba(0,0,0,.24);
+}
+.contato-ritual::before{
+  content:'';
+  position:absolute;
+  inset:14px;
+  border:1px solid rgba(200,168,75,.08);
+  border-radius:22px;
+  pointer-events:none;
+}
+.contato-ritual-kicker{
+  margin-bottom:12px;
+  color:var(--gold);
+  font-family:var(--sans);
+  font-size:.58rem;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  font-weight:500;
+}
+.contato-ritual-title{
+  max-width:260px;
+  margin-bottom:12px;
+  font-family:var(--display);
+  font-size:1.5rem;
+  letter-spacing:2px;
+  line-height:1.06;
+}
+.contato-ritual-text{
+  max-width:320px;
+  color:var(--white-dim);
+  font-family:var(--body);
+  font-size:1rem;
+  line-height:1.78;
+}
+.contato-tools{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:18px;
+}
+.contato-tool-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:9px 12px;
+  border:1px solid rgba(245,241,235,.08);
+  border-radius:999px;
+  background:rgba(8,8,7,.35);
+  color:var(--white-dim);
+  font-family:var(--sans);
+  font-size:.62rem;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+.contato-tool-chip svg{
+  width:16px;
+  height:16px;
+  stroke:var(--gold);
+  fill:none;
+}
+
 /* RESP */
 @media(max-width:900px){
-  .sobre-wrap,.booking-grid,.contato-grid,.modal-grid,.detail-inner{grid-template-columns:1fr;gap:28px;}
+  .sobre-wrap,.booking-grid,.contato-grid,.modal-grid,.detail-inner,.hero-stage{grid-template-columns:1fr;gap:28px;}
   .detail-art{border-right:none;border-bottom:1px solid var(--gold-border);padding:28px;}
   .footer-grid{grid-template-columns:1fr;gap:24px;}
   .svc-grid{grid-template-columns:1fr;}
@@ -809,20 +1329,35 @@ footer{
   .hamburger{display:flex;}
   nav .nav-cta{display:none;}
   section{padding:70px 5%;}
-  .hero-content{padding-top:132px;}
-  .hero-stats{gap:10px;}
+  .hero-stage{padding:132px 5% 70px;}
+  .hero-signals{grid-template-columns:1fr;}
+  .hero-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+  .hero-seal{margin-top:14px;}
   .stat{min-width:calc(50% - 10px);}
+  .booking-premium-band{grid-template-columns:1fr;}
+  .signature-strip{grid-template-columns:1fr;}
+  .badge-float{position:relative;top:auto;right:auto;display:inline-block;margin-top:16px;}
 }
 @media(max-width:500px){
   .slots-grid{grid-template-columns:repeat(2,1fr);}
   .form-row{grid-template-columns:1fr;}
-  .hero-stats{flex-wrap:wrap;}
+  .hero-stats{grid-template-columns:1fr;}
   .cart-panel{width:100vw;}
   .floating-actions{right:18px;bottom:18px;}
   nav{width:94%;}
   .stat{min-width:100%;}
   .amb-grid,.svc-grid,.produtos-grid,.depos-grid{gap:14px;}
   .slot.slot-expired::after,.slot.slot-taken:not(.slot-expired)::after{font-size:.42rem;}
+  .service-picks{grid-template-columns:1fr;}
+  .booking-side-shell,.booking-band-card{padding:18px;}
+  .hero-plaque{padding:22px 20px 20px;}
+  .hero-actions{flex-direction:column;align-items:stretch;}
+  .hero-actions .btn-primary,.hero-actions .btn-outline,.hero-actions .btn-gold{justify-content:center;width:100%;}
+  .hero-plaque-top,.hero-code{flex-direction:column;align-items:flex-start;}
+  .hero-seal{width:100%;}
+  .hero-seal-mark{flex-shrink:0;}
+  .hr-deco{justify-content:center;}
+  .hr-line{min-width:100px;}
 }
 </style>
 </head>
@@ -850,7 +1385,7 @@ footer{
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">✂ JR_<span class="nav-logo-accent">BARBEARIA</span></a>
+  <a href="#" class="nav-logo">JR_<span class="nav-logo-accent">BARBEARIA</span></a>
   <ul class="nav-links" id="navlinks">
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#servicos">Serviços</a></li>
@@ -871,28 +1406,56 @@ footer{
   <div class="hero-bg"></div>
   <div class="hero-lines"></div>
   <div class="hero-ghost">JR</div>
-  <div class="hero-content">
-    <div class="hero-eyebrow"><i></i>Dianópolis · TO · Est. 2024<i></i></div>
-    <h1 class="hero-title">Chega do<br><em>jeito certo.</em></h1>
-    <p class="hero-sub">Corte afiado, barba na régua, cerveja gelada e sinuca no intervalo. Mais do que uma barbearia — um território.</p>
-    <div class="hero-actions">
-      <button class="btn-primary" onclick="openModal()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="1"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Reservar Horário
-      </button>
-      <a href="#loja" class="btn-outline"><span>Ver Loja</span></a>
-      <a href="https://wa.me/5563992777323?text=Olá!%20Gostaria%20de%20agendar%20na%20Jr_barbearia" target="_blank" class="btn-gold">WhatsApp</a>
+  <div class="hero-stage">
+    <div class="hero-content">
+      <div class="hero-eyebrow"><i></i>Dianópolis · TO · Est. 2024<i></i></div>
+      <h1 class="hero-title">Presença forte.<br><em>acabamento impecável.</em></h1>
+      <p class="hero-sub">Cortes premium, barba na régua e um ambiente que mistura precisão, estilo e respeito ao seu tempo. Aqui você não só corta o cabelo. Você chega no ponto certo.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="openModal()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="1"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Reservar Horário
+        </button>
+        <a href="#contato" class="btn-outline"><span>Falar com a Barbearia</span></a>
+        <a href="https://wa.me/5563992777323?text=Olá!%20Gostaria%20de%20agendar%20na%20Jr_barbearia" target="_blank" class="btn-gold">WhatsApp</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num">4.0</div><div class="stat-label">Google</div></div>
+        <div class="stat"><div class="stat-num">100+</div><div class="stat-label">Clientes</div></div>
+        <div class="stat"><div class="stat-num">Nº1</div><div class="stat-label">Dianópolis</div></div>
+        <div class="stat"><div class="stat-num">08h</div><div class="stat-label">Abertura</div></div>
+      </div>
     </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num">4.0</div><div class="stat-label">★ Google</div></div>
-      <div class="stat"><div class="stat-num">100+</div><div class="stat-label">Clientes</div></div>
-      <div class="stat"><div class="stat-num">N°1</div><div class="stat-label">Dianópolis</div></div>
-      <div class="stat"><div class="stat-num">🎱</div><div class="stat-label">Sinuca</div></div>
+    <div class="hero-side" aria-hidden="true">
+      <div class="hero-plaque">
+        <div class="hero-plaque-top"><span>Assinatura da casa</span><span>Ritual da barbearia</span></div>
+        <div class="hero-plaque-title">Navalha, tesoura e presença.</div>
+        <p class="hero-plaque-text">Cada atendimento foi desenhado para remeter ao universo da barbearia clássica: precisão, acabamento limpo e uma atmosfera de respeito ao estilo.</p>
+        <div class="hero-tool-row">
+          <div class="hero-tool">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2.5"></circle><circle cx="6" cy="17" r="2.5"></circle><path d="M8.2 8.6 20 3"></path><path d="M8.2 15.4 20 21"></path><circle cx="9.5" cy="12" r="1.6"></circle></svg>
+            <div><strong>Corte de assinatura</strong><span>Leitura de estilo e acabamento firme.</span></div>
+          </div>
+          <div class="hero-tool">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h14"></path><path d="M3 12h18"></path><path d="M3 16h14"></path><path d="M18 6v12"></path><path d="M21 8v8"></path></svg>
+            <div><strong>Barba na régua</strong><span>Desenho preciso para valorizar o rosto.</span></div>
+          </div>
+          <div class="hero-tool">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="16" rx="2.5"></rect><path d="M8 4V2.5"></path><path d="M16 4V2.5"></path><path d="M5 9h14"></path></svg>
+            <div><strong>Agenda protegida</strong><span>Seu horário bloqueado com confirmação rápida.</span></div>
+          </div>
+        </div>
+        <div class="hero-code"><span>Ritual da cadeira ao acabamento</span><strong>JR Barbearia</strong></div>
+      </div>
+      <div class="hero-seal">
+        <span class="hero-seal-mark">JR</span>
+        <div>Feito para quem chega com presença<strong>e sai ainda melhor</strong></div>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="hr-deco"><div class="hr-line"></div><div class="hr-mark">✦ JR_BARBEARIA ✦</div><div class="hr-line"></div></div>
+<div class="hr-deco"><div class="hr-line"></div><div class="hr-mark">JR_BARBEARIA</div><div class="hr-line"></div></div>
 
 <!-- SOBRE -->
 <section id="sobre">
@@ -939,15 +1502,32 @@ footer{
     <div class="sobre-text reveal">
       <div class="section-eyebrow">Sobre nós</div>
       <h2 class="section-title">Corte de<br>respeito é <em>aqui.</em></h2>
-      <p>A Jr_barbearia é o ponto de encontro dos caras de Dianópolis. Não é só barbearia: é onde você chega, relaxa, joga uma sinuca, toma uma cerveja gelada e sai com o visual impecável.</p>
-      <p>Vibe de bar, precisão de barbearia premium. Cada cliente recebe o atendimento que merece — sem enrolação, sem achismo. Você pede, a gente entrega.</p>
+      <p>A Jr_barbearia é o ponto de encontro de quem valoriza presença, cuidado e estilo em cada detalhe. Você chega para relaxar, aproveitar o ambiente e sair com o visual alinhado do jeito certo.</p>
+      <p>Vibe marcante, execução precisa e atendimento direto. Sem improviso, sem correria e sem promessa vazia. Aqui cada corte é tratado como assinatura.</p>
       <div class="pills">
-        <span class="pill gold">🎱 Sinuca</span>
-        <span class="pill gold">🍺 Frigobar</span>
-        <span class="pill">✂️ Corte Moderno</span>
-        <span class="pill">🪒 Barba na Régua</span>
-        <span class="pill">🏍️ Vibe de Estrada</span>
-        <span class="pill">📍 Praça do Ouro</span>
+        <span class="pill gold">Sinuca</span>
+        <span class="pill gold">Frigobar</span>
+        <span class="pill">Corte Moderno</span>
+        <span class="pill">Barba na Régua</span>
+        <span class="pill">Vibe de Estrada</span>
+        <span class="pill">Praça do Ouro</span>
+      </div>
+      <div class="signature-strip">
+        <article class="signature-card">
+          <strong>01 · Navalha</strong>
+          <h3>Acabamento de respeito</h3>
+          <p>Contornos limpos, leitura do rosto e finalização cuidadosa para o resultado durar mais e aparecer de verdade.</p>
+        </article>
+        <article class="signature-card">
+          <strong>02 · Atmosfera</strong>
+          <h3>Ambiente com identidade</h3>
+          <p>Madeira, metal, couro, sinuca e conversa boa. Um espaço pensado para lembrar o universo clássico da barbearia.</p>
+        </article>
+        <article class="signature-card">
+          <strong>03 · Presença</strong>
+          <h3>Visual que se sustenta</h3>
+          <p>Do corte ao cuidado com a barba, tudo é feito para você sair pronto, alinhado e com mais confiança.</p>
+        </article>
       </div>
     </div>
   </div>
@@ -962,13 +1542,13 @@ footer{
     </div>
     <div class="amb-grid">
       <div class="amb-card reveal"><div class="amb-num">01</div><div class="amb-title">Mesa de Sinuca</div><p class="amb-desc">Enquanto espera ou depois do corte, cai uma sinuca no sangue. Mesa sempre pronta pra uma boa partida entre amigos.</p></div>
-      <div class="amb-card reveal"><div class="amb-num">02</div><div class="amb-title">Frigobar Gelado</div><p class="amb-desc">Cerveja bem gelada esperando por você. Escolha a sua, relaxa na cadeira e aproveita o atendimento com mais estilo.</p></div>
-      <div class="amb-card reveal"><div class="amb-num">03</div><div class="amb-title">Vibe de Estrada</div><p class="amb-desc">Aqui entra de jeans, couro ou como vier. Ambiente sem frescura, pra quem vive de verdade — na estrada ou na cidade.</p></div>
+      <div class="amb-card reveal"><div class="amb-num">02</div><div class="amb-title">Frigobar Gelado</div><p class="amb-desc">Cerveja sempre gelada para transformar a espera em parte da experiência. Um detalhe simples que faz o ambiente ter identidade própria.</p></div>
+      <div class="amb-card reveal"><div class="amb-num">03</div><div class="amb-title">Vibe de Estrada</div><p class="amb-desc">Ambiente com personalidade, sem exagero e sem pose. Uma estética forte para quem gosta de chegar bem e sair melhor ainda.</p></div>
     </div>
   </div>
 </section>
 
-<div class="hr-deco"><div class="hr-line"></div><div class="hr-mark">✦ SERVIÇOS ✦</div><div class="hr-line"></div></div>
+<div class="hr-deco"><div class="hr-line"></div><div class="hr-mark">SERVIÇOS</div><div class="hr-line"></div></div>
 
 <!-- SERVIÇOS -->
 <section id="servicos">
@@ -994,7 +1574,7 @@ footer{
       </div>
       <div class="svc-body">
         <div class="svc-name">Corte Masculino</div>
-        <p class="svc-desc">Seu visual, sua identidade. Cortes modernos, clássicos ou personalizados — do jeito que você quer, com precisão que fala por si.</p>
+        <p class="svc-desc">Seu visual, sua identidade. Cortes modernos, clássicos ou personalizados com acabamento limpo, leitura de estilo e execução precisa.</p>
         <div class="svc-footer">
           <div class="svc-price"><sup>R$</sup>25</div>
           <button class="btn-svc" onclick="event.stopPropagation();openModal('Corte Masculino')"><span>Agendar</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
@@ -1016,7 +1596,7 @@ footer{
       </div>
       <div class="svc-body">
         <div class="svc-name">Barba</div>
-        <p class="svc-desc">Barba alinhada, aparada e tratada com navalha afiada. Do look natural ao elaborado — entregamos o estilo que você quer.</p>
+        <p class="svc-desc">Barba alinhada, aparada e desenhada com navalha para entregar presença, definição e um resultado que valoriza o seu rosto.</p>
         <div class="svc-footer">
           <div class="svc-price"><sup>R$</sup>20</div>
           <button class="btn-svc" onclick="event.stopPropagation();openModal('Barba')"><span>Agendar</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
@@ -1036,7 +1616,7 @@ footer{
       </div>
       <div class="svc-body">
         <div class="svc-name">Corte + Barba</div>
-        <p class="svc-desc">O combo completo pra quem não abre mão de sair impecável. Visual total, preço imbatível. O favorito da casa.</p>
+        <p class="svc-desc">O pacote completo para quem quer sair pronto. Corte, barba e acabamento com melhor custo-benefício e resultado mais marcante.</p>
         <div class="svc-footer">
           <div class="svc-price"><sup>R$</sup>40</div>
           <button class="btn-svc" onclick="event.stopPropagation();openModal('Corte + Barba')"><span>Agendar</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
@@ -1059,7 +1639,7 @@ footer{
       </div>
       <div class="svc-body">
         <div class="svc-name">Acabamento / Pezinho</div>
-        <p class="svc-desc">Os detalhes fazem a diferença. Pezinho, navalhado e acabamento que deixa qualquer visual absolutamente afiado.</p>
+        <p class="svc-desc">Os detalhes fazem diferença. Ideal para manter o visual vivo entre um atendimento e outro, com limpeza rápida e precisa.</p>
         <div class="svc-footer">
           <div class="svc-price"><sup>R$</sup>15</div>
           <button class="btn-svc" onclick="event.stopPropagation();openModal('Acabamento / Pezinho')"><span>Agendar</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
@@ -1069,7 +1649,7 @@ footer{
   </div>
 </section>
 
-<div class="hr-deco"><div class="hr-line"></div><div class="hr-mark">✦ LOJA ✦</div><div class="hr-line"></div></div>
+<div class="hr-deco"><div class="hr-line"></div><div class="hr-mark">LOJA</div><div class="hr-line"></div></div>
 
 <!-- LOJA -->
 <section id="loja">
@@ -1079,7 +1659,7 @@ footer{
       <h2 class="section-title">Produtos premium<br>para o seu <em>estilo</em></h2>
     </div>
     <div>
-      <p style="color:var(--white-dim);font-family:var(--body);font-style:italic;font-size:1rem;line-height:1.85;max-width:360px;">Produtos selecionados usados pela equipe. Do melhor óleo de barba ao pompadê que segura o dia todo — enviamos pra todo Brasil.</p>
+      <p style="color:var(--white-dim);font-family:var(--body);font-style:italic;font-size:1rem;line-height:1.85;max-width:360px;">Produtos selecionados pela equipe para manter o resultado do atendimento por mais tempo. Performance, cuidado e presença no dia a dia.</p>
       <div class="loja-filters" style="margin-top:18px;">
         <button class="filter-btn active" data-filter="all">Todos</button>
         <button class="filter-btn" data-filter="barba">Barba</button>
@@ -1092,7 +1672,7 @@ footer{
   <div class="produtos-grid" id="produtosGrid"></div>
 </section>
 
-<div class="hr-deco"><div class="hr-line"></div><div class="hr-mark">✦ AVALIAÇÕES ✦</div><div class="hr-line"></div></div>
+<div class="hr-deco"><div class="hr-line"></div><div class="hr-mark">AVALIAÇÕES</div><div class="hr-line"></div></div>
 
 <!-- AVALIAÇÕES -->
 <section id="avaliacoes">
@@ -1100,15 +1680,15 @@ footer{
     <div class="section-eyebrow reveal">Avaliações</div>
     <h2 class="section-title reveal">O que a galera<br><em>tá falando</em></h2>
     <div class="rating-header reveal">
-      <div><div class="rating-big">4.0</div><div class="stars-row">⭐⭐⭐⭐</div><div class="rating-sub">Avaliações · Google</div></div>
-      <div class="rating-quote">"Se você quer chegar diferente e sair mais confiante, é aqui o lugar. Atendimento nota 10, ambiente top e preço super justo."</div>
+      <div><div class="rating-big">4.0</div><div class="stars-row">★★★★</div><div class="rating-sub">Avaliações · Google</div></div>
+      <div class="rating-quote">"Quem agenda uma vez entende rápido: atendimento no tempo certo, ambiente diferenciado e resultado que realmente entrega presença."</div>
     </div>
     <div class="depos-grid">
-      <div class="depo reveal"><div class="depo-q">"</div><p class="depo-text">Super indico!! Atendimento excelente, saí muito satisfeita. O ambiente é ótimo e o pessoal é muito atencioso. Sem dúvidas o melhor da região.</p><div class="depo-author"><div class="depo-av">J</div><div><div class="depo-name">Juliana Máximo</div><div class="depo-meta">1 avaliação · 3 meses atrás</div><div class="depo-stars">⭐⭐⭐⭐⭐</div></div></div></div>
-      <div class="depo reveal"><div class="depo-q">"</div><p class="depo-text">A melhor da cidade, sem discussão. Já fui em várias barbearias de Dianópolis e nenhuma chega perto. Corte impecável, atendimento top.</p><div class="depo-author"><div class="depo-av">B</div><div><div class="depo-name">Bruno Rodrigues</div><div class="depo-meta">7 avaliações · 2 fotos · 5 meses atrás</div><div class="depo-stars">⭐⭐⭐⭐⭐</div></div></div></div>
-      <div class="depo reveal"><div class="depo-q">"</div><p class="depo-text">Nova aqui e super indico! Fui pela primeira vez e adorei. Ambiente acolhedor, profissionais atenciosos. Já virei cliente fiel.</p><div class="depo-author"><div class="depo-av">M</div><div><div class="depo-name">Michelly Mendes</div><div class="depo-meta">1 avaliação · 2 dias atrás</div><div class="depo-stars">⭐⭐⭐⭐⭐</div></div></div></div>
-      <div class="depo reveal"><div class="depo-q">"</div><p class="depo-text">Fiz o combo corte + barba e ficou perfeito. Ambiente muito gostoso, ainda joguei sinuca enquanto esperava. Preço justo pelo que entrega.</p><div class="depo-author"><div class="depo-av">R</div><div><div class="depo-name">Rafael Santana</div><div class="depo-meta">3 avaliações · 1 mês atrás</div><div class="depo-stars">⭐⭐⭐⭐⭐</div></div></div></div>
-      <div class="depo reveal"><div class="depo-q">"</div><p class="depo-text">Agendei pelo WhatsApp, fui no horário marcado e fui atendido na hora. Acabamento perfeito, sem enrolação. Já indiquei pra vários amigos da cidade.</p><div class="depo-author"><div class="depo-av">L</div><div><div class="depo-name">Lucas Ferreira</div><div class="depo-meta">2 avaliações · 2 meses atrás</div><div class="depo-stars">⭐⭐⭐⭐</div></div></div></div>
+      <div class="depo reveal"><div class="depo-q">"</div><p class="depo-text">Super indico. Atendimento excelente, ambiente muito bem cuidado e resultado acima do esperado. Dá para sentir capricho em cada detalhe.</p><div class="depo-author"><div class="depo-av">J</div><div><div class="depo-name">Juliana Máximo</div><div class="depo-meta">1 avaliação · 3 meses atrás</div><div class="depo-stars">★★★★★</div></div></div></div>
+      <div class="depo reveal"><div class="depo-q">"</div><p class="depo-text">A melhor da cidade, sem discussão. Corte impecável, atendimento firme e ambiente com personalidade. Sempre saio satisfeito.</p><div class="depo-author"><div class="depo-av">B</div><div><div class="depo-name">Bruno Rodrigues</div><div class="depo-meta">7 avaliações · 2 fotos · 5 meses atrás</div><div class="depo-stars">★★★★★</div></div></div></div>
+      <div class="depo reveal"><div class="depo-q">"</div><p class="depo-text">Fui pela primeira vez e adorei. Profissionais atenciosos, espaço acolhedor e um atendimento que passa muita confiança.</p><div class="depo-author"><div class="depo-av">M</div><div><div class="depo-name">Michelly Mendes</div><div class="depo-meta">1 avaliação · 2 dias atrás</div><div class="depo-stars">★★★★★</div></div></div></div>
+      <div class="depo reveal"><div class="depo-q">"</div><p class="depo-text">Fiz o combo corte + barba e ficou perfeito. Preço justo, resultado forte e ainda aproveitei o ambiente com tranquilidade.</p><div class="depo-author"><div class="depo-av">R</div><div><div class="depo-name">Rafael Santana</div><div class="depo-meta">3 avaliações · 1 mês atrás</div><div class="depo-stars">★★★★★</div></div></div></div>
+      <div class="depo reveal"><div class="depo-q">"</div><p class="depo-text">Agendei pelo WhatsApp, cheguei no horário e fui atendido sem espera. Processo simples, rápido e profissional.</p><div class="depo-author"><div class="depo-av">L</div><div><div class="depo-name">Lucas Ferreira</div><div class="depo-meta">2 avaliações · 2 meses atrás</div><div class="depo-stars">★★★★</div></div></div></div>
     </div>
   </div>
 </section>
@@ -1119,7 +1699,7 @@ footer{
     <div class="reveal" style="margin-bottom:44px;">
       <div class="section-eyebrow">Agendamento Online</div>
       <h2 class="section-title">Reserve seu<br><em>horário agora</em></h2>
-      <p style="color:var(--white-dim);max-width:420px;margin-top:12px;line-height:1.85;font-family:var(--body);font-style:italic;font-size:1rem;">Selecione o dia e o horário. Sem fila, sem espera. Só você e a tesoura.</p>
+      <p style="color:var(--white-dim);max-width:520px;margin-top:12px;line-height:1.85;font-family:var(--body);font-style:italic;font-size:1rem;">Escolha a data, selecione o horário e confirme em segundos. Sem fila, sem improviso e com bloqueio automático para que sua vaga fique realmente reservada.</p>
       <div class="sync-badge" id="syncBadge" style="margin-top:16px;">
         <span class="sync-dot" id="syncDot"></span>
         <span id="syncText">Carregando horários...</span>
@@ -1173,10 +1753,16 @@ footer{
 <section id="contato">
   <div style="max-width:1200px;margin:0 auto;" class="reveal">
     <div class="section-eyebrow">Contato</div>
-    <h2 class="section-title">Vem nos<br><em>encontrar</em></h2>
+    <h2 class="section-title">Fale com a equipe e<br><em>reserve do jeito certo</em></h2>
+    <p class="contato-lead">Se você quer atendimento no tempo certo, confirmação rápida e um visual à altura, esse é o melhor caminho. Chame no WhatsApp, confirme seu horário e chegue com tudo alinhado.</p>
   </div>
   <div class="contato-grid">
     <div class="reveal">
+      <div class="contato-card">
+        <div class="contato-card-kicker">Atendimento direto</div>
+        <h3 class="contato-card-title">Seu horário confirmado com mais agilidade.</h3>
+        <p class="contato-card-text">Fale com a Jr_barbearia para tirar dúvidas, confirmar disponibilidade, alinhar seu serviço e garantir um atendimento sem espera desnecessária.</p>
+      </div>
       <div class="c-item"><div class="c-ico">📞</div><div><div class="c-label">WhatsApp</div><div class="c-value"><a href="https://wa.me/5563992777323" target="_blank" style="color:var(--white);text-decoration:none;">(63) 99277-7323</a></div></div></div>
       <div class="c-item"><div class="c-ico">📍</div><div><div class="c-label">Endereço</div><div class="c-value">Praça do Ouro – Centro<br>Dianópolis – TO, Brasil</div></div></div>
       <div class="c-item"><div class="c-ico">📸</div><div><div class="c-label">Instagram</div><div class="c-value"><a href="https://www.instagram.com/" target="_blank" style="color:var(--gold);text-decoration:none;">@jr_barbearia</a></div></div></div>
@@ -1186,11 +1772,30 @@ footer{
         <tr class="closed"><td>Domingo</td><td>Fechado</td></tr>
       </table>
       <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;">
-        <a href="https://wa.me/5563992777323?text=Olá!%20Gostaria%20de%20agendar%20na%20Jr_barbearia" target="_blank" class="btn-primary">💬 WhatsApp</a>
-        <a href="https://maps.google.com/?q=Praça+do+Ouro,+Dianópolis,+TO" target="_blank" class="btn-outline"><span>🗺️ Como Chegar</span></a>
+        <a href="https://wa.me/5563992777323?text=Olá!%20Gostaria%20de%20agendar%20na%20Jr_barbearia" target="_blank" class="btn-primary">Chamar no WhatsApp</a>
+        <a href="https://maps.google.com/?q=Praça+do+Ouro,+Dianópolis,+TO" target="_blank" class="btn-outline"><span>Como Chegar</span></a>
       </div>
     </div>
     <div class="reveal">
+      <div class="contato-ritual">
+        <div class="contato-ritual-kicker">Universo da casa</div>
+        <h3 class="contato-ritual-title">Da cadeira ao espelho final.</h3>
+        <p class="contato-ritual-text">A experiência foi pensada para remeter ao melhor da barbearia clássica: ferramentas certas, ambiente marcante e atendimento direto.</p>
+        <div class="contato-tools">
+          <span class="contato-tool-chip">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2.5"></circle><circle cx="6" cy="17" r="2.5"></circle><path d="M8.2 8.6 20 3"></path><path d="M8.2 15.4 20 21"></path><circle cx="9.5" cy="12" r="1.6"></circle></svg>
+            Tesoura
+          </span>
+          <span class="contato-tool-chip">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h14"></path><path d="M3 12h18"></path><path d="M3 16h14"></path><path d="M18 6v12"></path><path d="M21 8v8"></path></svg>
+            Pente
+          </span>
+          <span class="contato-tool-chip">
+            <svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h14v5H5z"></path><path d="M8 10v9"></path><path d="M12 10v9"></path><path d="M16 10v9"></path></svg>
+            Máquina
+          </span>
+        </div>
+      </div>
       <a href="https://maps.google.com/?q=Praça+do+Ouro,+Dianópolis,+TO" target="_blank" class="map-box">
         <svg width="56" height="56" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><circle cx="32" cy="26" r="14" fill="none" stroke="#C8A84B" stroke-width="2"/><circle cx="32" cy="26" r="5" fill="#C8A84B"/><path d="M32 40 Q18 54 32 64 Q46 54 32 40Z" fill="#C8A84B" opacity=".5"/><circle cx="32" cy="26" r="22" fill="none" stroke="rgba(200,168,75,.2)" stroke-width="1"/></svg>
         <div class="map-label">Praça do Ouro – Centro</div>
@@ -1258,7 +1863,7 @@ footer{
     <button class="cart-close" onclick="closeCart()">✕</button>
   </div>
   <div class="cart-body" id="cartBody">
-    <div class="cart-empty" id="cartEmpty">Seu carrinho está vazio.<br><br>Explore nossa loja 👇</div>
+    <div class="cart-empty" id="cartEmpty">Seu carrinho está vazio.<br><br>Explore nossa loja abaixo.</div>
   </div>
   <div class="cart-footer" id="cartFooter" style="display:none;">
     <div class="cart-total-row">
@@ -1409,13 +2014,14 @@ footer{
     </div>
   </div>
 </div>
+</div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // INTRO
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 (()=>{
   const s=document.getElementById('intro-screen');
   document.body.style.overflow='hidden';
@@ -1428,9 +2034,9 @@ function showToast(msg,dur=2200){
   setTimeout(()=>t.classList.remove('show'),dur);
 }
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // SYNC STATUS UI
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function setSyncStatus(state, text) {
   const dot = document.getElementById('syncDot');
   const txt = document.getElementById('syncText');
@@ -1439,10 +2045,10 @@ function setSyncStatus(state, text) {
   txt.textContent = text;
 }
 
-// ─────────────────────────────────────────────
-// DATA UTILS — gera string "YYYY-MM-DD" de hoje
-// no fuso horário local (Brasília)
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// DATA UTILS â€” gera string "YYYY-MM-DD" de hoje
+// no fuso horÃ¡rio local (BrasÃ­lia)
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function todayStr() {
   const now = new Date();
   const y = now.getFullYear();
@@ -1463,17 +2069,15 @@ function isSlotExpired(dateStr, slot) {
 }
 
 function slotUnavailableMessage(dateStr, slot) {
-  return isSlotExpired(dateStr, slot)
-    ? '⏰ Esse horário já passou hoje. Escolha outro.'
-    : '❌ Esse horário acabou de ser reservado! Escolha outro.';
+  return isSlotExpired(dateStr, slot) ? 'Esse horário já passou hoje. Escolha outro.' : 'Esse horário acabou de ser reservado! Escolha outro.';
 }
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // BOOKINGS
 //
 // Estrutura armazenada:
 // {
-//   "2025-06-10": {           ← chave = data
+//   "2025-06-10": {           â† chave = data
 //     "09:00": {name, phone, service},
 //     "10:30": {name, phone, service},
 //     ...
@@ -1481,19 +2085,19 @@ function slotUnavailableMessage(dateStr, slot) {
 //   ...
 // }
 //
-// Os horários ficam indisponíveis até o fim do dia.
+// Os horÃ¡rios ficam indisponÃ­veis atÃ© o fim do dia.
 // No primeiro carregamento do dia seguinte, as datas
-// antigas são removidas e os horários voltam a abrir.
+// antigas sÃ£o removidas e os horÃ¡rios voltam a abrir.
 //
 // Usa `localStorage` no navegador comum e, se existir,
-// também sincroniza com `window.storage`.
-// ─────────────────────────────────────────────
+// tambÃ©m sincroniza com `window.storage`.
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const STORAGE_KEY = 'jr_bookings_v3';
 const SUPABASE_URL = 'https://pjxromopwfqfhquommsv.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBqeHJvbW9wd2ZxZmhxdW9tbXN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5Nzg0NjIsImV4cCI6MjA5MDU1NDQ2Mn0.cNWkAE3_L41fipd-5GtXjtQUTqO19FnSEFoAficidmY';
 const SUPABASE_TABLE = 'bookings';
 
-// Cache local (objeto aninhado: data → {slot → dados})
+// Cache local (objeto aninhado: data â†’ {slot â†’ dados})
 let bookings = {};
 let storageReady = false;
 
@@ -1638,7 +2242,7 @@ async function loadBookings() {
       await writeStoredBookings(cleaned);
     }
     storageReady = true;
-    setSyncStatus('synced', hasSupabaseConfig() ? 'Agenda online conectada ✓' : 'Horários carregados neste aparelho ✓');
+    setSyncStatus('synced', hasSupabaseConfig() ? 'Agenda online conectada' : 'Horários carregados neste aparelho');
   } catch (err) {
     bookings = purgeOldDates(readLocalBookings());
     writeLocalBookings(bookings);
@@ -1647,7 +2251,7 @@ async function loadBookings() {
   }
 }
 
-// Verifica se um slot está reservado
+// Verifica se um slot estÃ¡ reservado
 function isSlotTaken(dateStr, slot) {
   return !!(bookings[dateStr] && bookings[dateStr][slot]);
 }
@@ -1658,9 +2262,9 @@ async function saveBooking(dateStr, slot, data) {
   setSyncStatus('syncing', 'Salvando...');
   try {
     await writeStoredBookings(bookings);
-    setSyncStatus('synced', 'Horário salvo e sincronizado ✓');
+    setSyncStatus('synced', 'Horário salvo e sincronizado');
   } catch (err) {
-    setSyncStatus('error', 'Erro ao sincronizar — tente novamente');
+    setSyncStatus('error', 'Erro ao sincronizar - tente novamente');
     console.error('Storage error:', err);
   }
 }
@@ -1674,7 +2278,7 @@ async function reserveBooking(dateStr, slot, data) {
     }
     bookings = purgeOldDates(await readStoredBookings());
     writeLocalBookings(bookings);
-    setSyncStatus('synced', 'Horário salvo na agenda online ✓');
+    setSyncStatus('synced', 'Horário salvo na agenda online');
     return { ok: true };
   }
 
@@ -1687,10 +2291,10 @@ async function refreshAndRenderSlots(dateStr, areaId, onSel, y, m, d) {
   setSyncStatus('syncing', 'Verificando disponibilidade...');
   try {
     bookings = purgeOldDates(await readStoredBookings());
-    setSyncStatus('synced', 'Horários sincronizados ✓');
+    setSyncStatus('synced', 'Horários sincronizados');
   } catch(e) {
     bookings = purgeOldDates(readLocalBookings());
-    setSyncStatus('synced', 'Horários sincronizados ✓');
+    setSyncStatus('synced', 'Horários sincronizados');
   }
   renderSlots(dateStr, areaId, onSel, y, m, d);
 }
@@ -1702,7 +2306,7 @@ function startPolling(dateStr, areaId, onSel, y, m, d) {
   pollingInterval = setInterval(async () => {
     try {
       bookings = purgeOldDates(await readStoredBookings());
-      // Re-renderiza slots sem mover o foco do usuário
+      // Re-renderiza slots sem mover o foco do usuÃ¡rio
       renderSlots(dateStr, areaId, onSel, y, m, d, true);
     } catch(e) {}
   }, 30000); // 30 segundos
@@ -1711,22 +2315,22 @@ function stopPolling() {
   if (pollingInterval) { clearInterval(pollingInterval); pollingInterval = null; }
 }
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // PRODUCTS DATA
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const PRODUCTS=[
   {id:1,cat:'cabelo',name:'Pomada Matte Clay',brand:'Barber Pro',desc:'Fixação forte, acabamento fosco. Ideal para penteados texturizados e cortes degradê.',price:45,badge:'hot',bg:'linear-gradient(135deg,#1a0d0a,#2a1510)',art:'pomade',
    features:['Fixação forte e duradoura','Acabamento 100% fosco','Fácil de lavar','Ideal para degradê e texturizado','Uso profissional']},
   {id:2,cat:'barba',name:'Óleo para Barba',brand:'Jr_ Seleção',desc:'Blend de óleos naturais que hidrata, amacia e dá brilho à barba. Aroma amadeirado.',price:38,badge:'new',bg:'linear-gradient(135deg,#0a100a,#101810)',art:'oil',
-   features:['100% óleos naturais','Hidrata e amacioa barba','Aroma amadeirado exclusivo','Aplicar após higienização','30ml']},
+   features:['100% óleos naturais','Hidrata e amacia a barba','Aroma amadeirado exclusivo','Aplicar após higienização','30ml']},
   {id:3,cat:'barba',name:'Balm para Barba',brand:'Barber Pro',desc:'Condiciona e modela a barba sem deixar oleoso. Perfeito para barba de 3 dias ou mais.',price:42,badge:null,bg:'linear-gradient(135deg,#0d0d0a,#1a1408)',art:'balm',
    features:['Condicionamento profundo','Modela sem pesar','Fórmula não oleosa','Para barbas curtas e médias','Com manteiga de karité']},
-  {id:4,cat:'cabelo',name:'Pomada Brilhosa',brand:'Vintage Style',desc:'Efeito vintage úmido. Fixação média, brilho intenso. Reviver o visual clássico dos anos 50.',price:40,badge:null,bg:'linear-gradient(135deg,#08080f,#14101a)',art:'pomade2',
+  {id:4,cat:'cabelo',name:'Pomada Brilhosa',brand:'Vintage Style',desc:'Efeito vintage úmido. Fixação média, brilho intenso. Ideal para reviver o visual clássico dos anos 50.',price:40,badge:null,bg:'linear-gradient(135deg,#08080f,#14101a)',art:'pomade2',
    features:['Estilo vintage autêntico','Brilho intenso e úmido','Fixação média flexível','Look clássico dos anos 50','Base aquosa, fácil remoção']},
-  {id:5,cat:'pele',name:'Gel Pós-Barba',brand:'Jr_ Seleção',desc:'Acalma a pele após o barbear, previne ardência e ingrown. Com aloe vera e vitamina E.',price:35,badge:'new',bg:'linear-gradient(135deg,#0a0a14,#10101e)',art:'gel',
+  {id:5,cat:'pele',name:'Gel Pós-Barba',brand:'Jr_ Seleção',desc:'Acalma a pele após o barbear, previne ardência e irritação. Com aloe vera e vitamina E.',price:35,badge:'new',bg:'linear-gradient(135deg,#0a0a14,#10101e)',art:'gel',
    features:['Acalma e refresca a pele','Previne pelos encravados','Com aloe vera e vitamina E','Absorção rápida','Sem álcool na fórmula']},
-  {id:6,cat:'acessorios',name:'Pente Fino Profissional',brand:'Barber Tools',desc:'Aço inoxidável, anti-estático. O mesmo usado pelos barbeiros aqui na Jr_.',price:28,badge:null,bg:'linear-gradient(135deg,#0f0f0c,#181810)',art:'comb',
-   features:['Aço inoxidável premium','Anti-estático','Dentes finos e precisos','Resistente e duradouro','Profissional']},
+  {id:6,cat:'acessorios',name:'Pente Fino Profissional',brand:'Barber Tools',desc:'Aço inoxidável e antiestático. O mesmo usado pelos barbeiros aqui na Jr_.',price:28,badge:null,bg:'linear-gradient(135deg,#0f0f0c,#181810)',art:'comb',
+   features:['Aço inoxidável premium','Antiestático','Dentes finos e precisos','Resistente e duradouro','Profissional']},
   {id:7,cat:'barba',name:'Shampoo para Barba',brand:'Barber Pro',desc:'Limpeza profunda sem ressecar. Remove impurezas preservando os óleos naturais da barba.',price:32,oldPrice:40,badge:'sale',bg:'linear-gradient(135deg,#0a1414,#0a1a1a)',art:'shampoo',
    features:['Limpeza profunda','Não resseca a barba','Preserva óleos naturais','pH balanceado','200ml']},
   {id:8,cat:'acessorios',name:'Kit Iniciante Barba',brand:'Jr_ Kit',desc:'Combo completo: óleo, balm, shampoo e pente. Tudo que você precisa para cuidar da barba.',price:110,oldPrice:135,badge:'sale',bg:'linear-gradient(135deg,#1a0808,#2a1010)',art:'kit',
@@ -1736,9 +2340,114 @@ const PRODUCTS=[
 const SERVICES={
   corte:{name:'Corte Masculino',price:25,time:'~35 min',desc:'Corte personalizado com máquina e tesoura. Inclui lavagem e finalização com produto premium.',features:['Consulta de estilo personalizada','Corte com máquina e tesoura','Navalhado no pescoço','Finalização com produto','Duração aproximada de 35 minutos'],art:'scissors'},
   barba:{name:'Barba',price:20,time:'~25 min',desc:'Alinhamento e modelagem completa com navalha. Inclui toalha quente, creme de barbear e hidratação.',features:['Toalha quente relaxante','Creme de barbear premium','Navalha profissional','Alinhamento preciso','Hidratação pós-barba'],art:'razor'},
-  combo:{name:'Corte + Barba',price:40,time:'~55 min',desc:'O combo completo. Corte personalizado + barba tratada. O favorito da casa — melhor custo-benefício.',features:['Tudo do corte masculino','Tudo do serviço de barba','Desconto especial combinado','Sessão completa de 55 min','O serviço mais popular'],art:'combo'},
-  pezinho:{name:'Acabamento / Pezinho',price:15,time:'~15 min',desc:'Acabamento perfeito no contorno: pescoço, têmporas e maçãs do rosto com navalha.',features:['Contorno com navalha','Pescoço e têmporas','Máquina de acabamento zero','Resultado impecável','Rápido — 15 minutos'],art:'trim'},
+  combo:{name:'Corte + Barba',price:40,time:'~55 min',desc:'O combo completo. Corte personalizado mais barba tratada. O favorito da casa e o melhor custo-benefício.',features:['Tudo do corte masculino','Tudo do serviço de barba','Desconto especial combinado','Sessão completa de 55 min','O serviço mais popular'],art:'combo'},
+  pezinho:{name:'Acabamento / Pezinho',price:15,time:'~15 min',desc:'Acabamento perfeito no contorno: pescoço, têmporas e maçãs do rosto com navalha.',features:['Contorno com navalha','Pescoço e têmporas','Máquina de acabamento zero','Resultado impecável','Rápido - 15 minutos'],art:'trim'},
 };
+
+function formatMoney(value){
+  return `R$ ${value.toFixed(2).replace('.',',')}`;
+}
+
+function getServiceMeta(serviceLabel){
+  if(!serviceLabel)return null;
+  return Object.values(SERVICES).find(service=>serviceLabel.startsWith(service.name))||null;
+}
+
+function getBookingUI(mode='main'){
+  const modal = mode==='modal';
+  return {
+    select: document.getElementById(modal ? 'serviceSelectM' : 'serviceSelect'),
+    summary: document.getElementById(modal ? 'resumoAgendamentoM' : 'resumoAgendamento'),
+    spotlight: document.getElementById(modal ? 'serviceSpotlightModal' : 'serviceSpotlightMain'),
+    picks: document.getElementById(modal ? 'servicePicksModal' : 'servicePicksMain'),
+    date: modal ? selDateM : selDate,
+    slot: modal ? selSlotM : selSlot,
+  };
+}
+
+function normalizePickLabel(label){
+  return ({
+    'Corte': 'Corte Masculino',
+    'Barba': 'Barba',
+    'Combo': 'Corte + Barba',
+    'Acabamento': 'Acabamento / Pezinho',
+  })[label] || label;
+}
+
+function updateServicePicksState(mode='main'){
+  const ui=getBookingUI(mode);
+  if(!ui.picks || !ui.select)return;
+  const meta=getServiceMeta(ui.select.value);
+  ui.picks.querySelectorAll('.service-pick').forEach(btn=>{
+    const active = !!meta && meta.name===normalizePickLabel(btn.textContent.trim());
+    btn.classList.toggle('active', active);
+  });
+}
+
+function renderServiceSpotlight(mode='main'){
+  const ui=getBookingUI(mode);
+  if(!ui.spotlight || !ui.select)return;
+  const meta=getServiceMeta(ui.select.value);
+  if(!meta){
+    ui.spotlight.innerHTML = `<div class="service-spotlight-empty">${mode==='modal' ? 'Escolha o serviço para ver os detalhes do atendimento.' : 'Selecione um serviço para ver duração, investimento e destaque da experiência.'}</div>`;
+    updateServicePicksState(mode);
+    return;
+  }
+  ui.spotlight.innerHTML = `
+    <div class="service-spotlight-top">
+      <div class="service-spotlight-name">${meta.name}</div>
+      <div class="service-spotlight-price">${formatMoney(meta.price)}</div>
+    </div>
+    <div class="service-spotlight-meta">
+      <span class="service-meta-chip">${meta.time}</span>
+      <span class="service-meta-chip">Atendimento Premium</span>
+      <span class="service-meta-chip">${mode==='modal' ? 'Reserva Rápida' : 'Escolha Guiada'}</span>
+    </div>
+    <div class="service-spotlight-desc">${meta.desc}</div>
+    <div class="service-spotlight-features">
+      ${meta.features.slice(0,3).map(feature=>`<span class="service-feature-chip">${feature}</span>`).join('')}
+    </div>
+  `;
+  updateServicePicksState(mode);
+}
+
+function renderBookingResume(mode='main'){
+  const ui=getBookingUI(mode);
+  if(!ui.summary || !ui.select)return;
+  const meta=getServiceMeta(ui.select.value);
+  const pieces = [];
+  if(ui.date && ui.slot){
+    const dt = new Date(ui.date+'T12:00:00');
+    pieces.push(`Data: <strong>${dt.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'})}</strong> às <strong>${ui.slot}</strong>`);
+  }
+  if(meta){
+    pieces.push(`✂️ <strong>${meta.name}</strong> · ${meta.time} · <strong>${formatMoney(meta.price)}</strong>`);
+  }
+  if(!pieces.length){
+    ui.summary.style.display='none';
+    return;
+  }
+  ui.summary.style.display='block';
+  ui.summary.innerHTML = pieces.join('<br>');
+}
+
+function selectServiceShortcut(serviceName, mode='main'){
+  const ui=getBookingUI(mode);
+  if(!ui.select)return;
+  for(let i=0;i<ui.select.options.length;i++){
+    if(ui.select.options[i].value.startsWith(serviceName)){
+      ui.select.selectedIndex=i;
+      break;
+    }
+  }
+  renderServiceSpotlight(mode);
+  renderBookingResume(mode);
+}
+
+function syncBookingServiceUI(mode='main'){
+  renderServiceSpotlight(mode);
+  renderBookingResume(mode);
+}
 
 let cart=JSON.parse(localStorage.getItem('jr_cart_v2')||'[]');
 let activeFilter='all';
@@ -1749,7 +2458,7 @@ function getProductSVG(type,size=80){
     oil:`<svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" width="${size}"><path d="M38 30 L38 20 Q38 10 50 8 Q62 10 62 20 L62 30 Q68 40 68 65 Q68 95 50 98 Q32 95 32 65 Q32 40 38 30Z" fill="#1a2a14" stroke="#2a4a1e" stroke-width="1.5"/><path d="M42 35 L42 25 Q42 18 50 16 Q58 18 58 25 L58 35 Q62 43 62 62 Q62 85 50 88 Q38 85 38 62 Q38 43 42 35Z" fill="rgba(200,168,75,.12)"/><text x="50" y="62" text-anchor="middle" font-family="Cinzel" font-size="7" fill="#C8A84B">BEARD</text><text x="50" y="72" text-anchor="middle" font-family="Cinzel" font-size="7" fill="#888">OIL</text><ellipse cx="50" cy="10" rx="8" ry="4" fill="#666"/></svg>`,
     balm:`<svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" width="${size}"><rect x="20" y="35" width="60" height="55" rx="5" fill="#18180e" stroke="#2a2a1a" stroke-width="1.5"/><ellipse cx="50" cy="35" rx="30" ry="10" fill="#222218" stroke="#2a2a1a" stroke-width="1.5"/><rect x="24" y="48" width="52" height="28" rx="2" fill="#10100a"/><text x="50" y="65" text-anchor="middle" font-family="Cinzel" font-size="9" fill="#C8A84B" letter-spacing="2">BALM</text></svg>`,
     pomade2:`<svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" width="${size}"><rect x="22" y="28" width="56" height="65" rx="4" fill="#0e0e1e" stroke="#2a2a3a" stroke-width="1.5"/><rect x="30" y="18" width="40" height="13" rx="3" fill="#1a1a2e"/><rect x="25" y="42" width="50" height="32" rx="2" fill="#0a0a2e" opacity=".8"/><text x="50" y="60" text-anchor="middle" font-family="Cinzel" font-size="8" fill="#C8A84B" letter-spacing="2">VINTAGE</text><text x="50" y="70" text-anchor="middle" font-family="Cinzel" font-size="7" fill="#666">POMADE</text></svg>`,
-    gel:`<svg viewBox="0 0 80 130" xmlns="http://www.w3.org/2000/svg" width="${size}"><path d="M25 35 Q20 50 20 80 Q20 110 40 112 Q60 110 60 80 Q60 50 55 35 L55 20 Q55 12 40 10 Q25 12 25 20 Z" fill="#0e0e2a" stroke="#1e1e4a" stroke-width="1.5"/><text x="40" y="72" text-anchor="middle" font-family="Cinzel" font-size="7" fill="#C8A84B">PÓS</text><text x="40" y="82" text-anchor="middle" font-family="Cinzel" font-size="7" fill="#666">BARBA</text><ellipse cx="40" cy="12" rx="10" ry="4" fill="#444"/></svg>`,
+    gel:`<svg viewBox="0 0 80 130" xmlns="http://www.w3.org/2000/svg" width="${size}"><path d="M25 35 Q20 50 20 80 Q20 110 40 112 Q60 110 60 80 Q60 50 55 35 L55 20 Q55 12 40 10 Q25 12 25 20 Z" fill="#0e0e2a" stroke="#1e1e4a" stroke-width="1.5"/><text x="40" y="72" text-anchor="middle" font-family="Cinzel" font-size="7" fill="#C8A84B">POS</text><text x="40" y="82" text-anchor="middle" font-family="Cinzel" font-size="7" fill="#666">BARBA</text><ellipse cx="40" cy="12" rx="10" ry="4" fill="#444"/></svg>`,
     comb:`<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg" width="${size*1.3}"><rect x="5" y="10" width="110" height="16" rx="3" fill="#2a2a22" stroke="#4a4a3a" stroke-width="1"/><rect x="5" y="10" width="110" height="8" rx="3" fill="#3a3a2e"/><g fill="#666"><rect x="10" y="18" width="3" height="28" rx="1"/><rect x="18" y="18" width="3" height="28" rx="1"/><rect x="26" y="18" width="3" height="28" rx="1"/><rect x="34" y="18" width="3" height="28" rx="1"/><rect x="42" y="18" width="3" height="28" rx="1"/><rect x="50" y="18" width="3" height="28" rx="1"/><rect x="58" y="18" width="3" height="28" rx="1"/><rect x="66" y="18" width="3" height="28" rx="1"/><rect x="74" y="18" width="3" height="28" rx="1"/><rect x="82" y="18" width="3" height="28" rx="1"/><rect x="90" y="18" width="3" height="28" rx="1"/><rect x="98" y="18" width="3" height="28" rx="1"/><rect x="106" y="18" width="3" height="28" rx="1"/></g></svg>`,
     shampoo:`<svg viewBox="0 0 80 130" xmlns="http://www.w3.org/2000/svg" width="${size}"><path d="M25 35 Q20 50 20 80 Q20 110 40 112 Q60 110 60 80 Q60 50 55 35 L55 20 Q55 12 40 10 Q25 12 25 20 Z" fill="#0a1e1e" stroke="#1a3a3a" stroke-width="1.5"/><text x="40" y="70" text-anchor="middle" font-family="Cinzel" font-size="7" fill="#C8A84B">BEARD</text><text x="40" y="80" text-anchor="middle" font-family="Cinzel" font-size="7" fill="#666">WASH</text><ellipse cx="40" cy="12" rx="12" ry="5" fill="#666"/></svg>`,
     kit:`<svg viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg" width="${size*1.3}"><rect x="5" y="20" width="110" height="65" rx="6" fill="#160a0a" stroke="#2a1410" stroke-width="2"/><rect x="5" y="20" width="110" height="20" rx="6" fill="#C8A84B" opacity=".2"/><text x="60" y="34" text-anchor="middle" font-family="Cinzel" font-size="9" fill="#C8A84B" letter-spacing="3">KIT BARBA</text><rect x="15" y="50" width="18" height="28" rx="3" fill="#1a2a14"/><rect x="38" y="50" width="14" height="28" rx="3" fill="#181814"/><rect x="57" y="50" width="18" height="28" rx="3" fill="#0e0e1e"/><rect x="82" y="56" width="26" height="8" rx="2" fill="#2a2a22"/><g fill="#666"><rect x="84" y="62" width="2" height="10" rx="1"/><rect x="88" y="62" width="2" height="10" rx="1"/><rect x="92" y="62" width="2" height="10" rx="1"/><rect x="96" y="62" width="2" height="10" rx="1"/><rect x="100" y="62" width="2" height="10" rx="1"/></g></svg>`,
@@ -1763,10 +2472,10 @@ function getProductSVG(type,size=80){
 
 function renderProducts(){
   const grid=document.getElementById('produtosGrid');
-  const filtered=activeFilter==='all'?PRODUCTS:PRODUCTS.filter(p=>p.cat===activeFilter);
+  const filtered=activeFilter==='all' ? PRODUCTS : PRODUCTS.filter(p=>p.cat===activeFilter);
   grid.innerHTML=filtered.map(p=>`
     <div class="produto-card" onclick="openProductDetail(${p.id})">
-      ${p.badge?`<span class="produto-badge badge-${p.badge}">${p.badge==='new'?'Novo':p.badge==='hot'?'Popular':'Oferta'}</span>`:''}
+      ${p.badge ? `<span class="produto-badge badge-${p.badge}">${p.badge==='new' ? 'Novo' : p.badge==='hot' ? 'Popular' : 'Oferta'}</span>` : ''}
       <div class="produto-art" style="background:${p.bg};">${getProductSVG(p.art)}</div>
       <div class="produto-body">
         <div class="produto-cat">${p.brand}</div>
@@ -1774,7 +2483,7 @@ function renderProducts(){
         <p class="produto-desc">${p.desc}</p>
         <div class="produto-footer">
           <div>
-            ${p.oldPrice?`<div class="produto-price-old">R$ ${p.oldPrice.toFixed(2).replace('.',',')}</div>`:''}
+            ${p.oldPrice ? `<div class="produto-price-old">R$ ${p.oldPrice.toFixed(2).replace('.',',')}</div>` : ''}
             <div class="produto-price"><sup>R$</sup>${p.price}</div>
           </div>
           <button class="btn-add" onclick="addToCart(${p.id},event)">+ Adicionar</button>
@@ -1792,9 +2501,9 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
 });
 renderProducts();
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // DETAIL MODALS
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function openServiceDetail(key){
   const s=SERVICES[key];if(!s)return;
   document.getElementById('detailArt').innerHTML=`<div style="background:var(--black-3);padding:24px;width:100%;">${getProductSVG(s.art,120)}</div>`;
@@ -1820,7 +2529,7 @@ function openProductDetail(id){
     <div class="detail-cat">${p.brand}</div>
     <div class="detail-name">${p.name}</div>
     <div class="detail-price">
-      ${p.oldPrice?`<span style="font-size:1rem;color:var(--white-dim);text-decoration:line-through;font-family:var(--sans);margin-right:8px;">R$${p.oldPrice}</span>`:''}
+      ${p.oldPrice ? `<span style="font-size:1rem;color:var(--white-dim);text-decoration:line-through;font-family:var(--sans);margin-right:8px;">R$${p.oldPrice}</span>` : ''}
       <sup>R$</sup>${p.price}
     </div>
     <div class="detail-desc">${p.desc}</div>
@@ -1840,9 +2549,9 @@ function closeDetail(){
 }
 document.getElementById('detailOverlay').addEventListener('click',e=>{if(e.target===document.getElementById('detailOverlay'))closeDetail();});
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // CART
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function addToCart(id,e){
   if(e){e.stopPropagation();}
   const p=PRODUCTS.find(p=>p.id===id);if(!p)return;
@@ -1882,9 +2591,9 @@ function openCart(){document.getElementById('cartOverlay').classList.add('open')
 function closeCart(){document.getElementById('cartOverlay').classList.remove('open');document.getElementById('cartPanel').classList.remove('open');document.body.style.overflow='';}
 document.getElementById('cartBtn').addEventListener('click',openCart);
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // CHECKOUT
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function openCheckout(){
   if(cart.length===0){showToast('Carrinho vazio');return;}
   closeCart();
@@ -1914,7 +2623,6 @@ function confirmPayment(){
   if(!address){showToast('Informe o endereço de entrega');return;}
   const total=cartTotal();
   const itemsText=cart.map(c=>`• ${c.name} × ${c.qty} = R$${(c.price*c.qty).toFixed(2)}`).join('\n');
-  const waMsg=`Olá! Realizei um pedido na Jr_barbearia.\n\n👤 *${name}*\n📞 ${phone}\n📍 ${address}\n\n*Pedido:*\n${itemsText}\n\n💰 *Total: R$ ${total.toFixed(2).replace('.',',')}*\n💳 Pagamento: PIX\n\n_Segue o comprovante em anexo_`;
   document.getElementById('btnComprovante').onclick=()=>window.open(`https://wa.me/5563992777323?text=${encodeURIComponent(waMsg)}`,'_blank');
   document.getElementById('paySuccessText').textContent=`${name}, pedido recebido! Total: R$ ${total.toFixed(2).replace('.',',')}. Envie o comprovante PIX para confirmar a entrega.`;
   document.getElementById('checkoutForm').style.display='none';
@@ -1922,18 +2630,18 @@ function confirmPayment(){
   cart=[];saveCart();renderCart();
 }
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // CALENDAR
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const today=new Date();today.setHours(0,0,0,0);
-const MONTHS=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-const DAYS_PT=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+const MONTHS=['Janeiro','Fevereiro','Marco','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const DAYS_PT=['Dom','Seg','Ter','Qua','Qui','Sex','Sab'];
 const ALL_SLOTS=['08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30','13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00','17:30','18:00','18:30'];
 
 let selDate=null,selSlot=null,mainY=today.getFullYear(),mainM=today.getMonth();
 let selDateM=null,selSlotM=null,modY=today.getFullYear(),modM=today.getMonth();
 
-// Estado de polling por calendário
+// Estado de polling por calendÃ¡rio
 let activePolling = { main: null, modal: null };
 
 function buildCal(y,m,gid,mid,onSel){
@@ -1965,8 +2673,8 @@ function onSelMain(y,m,d,el,gid){
   selSlot=null;
   document.getElementById('bookingForm').classList.remove('show');
   document.getElementById('bookingSuccess').classList.remove('show');
-  document.getElementById('resumoAgendamento').style.display='none';
-  document.getElementById('slotsArea').innerHTML='<div class="slot-empty" style="border-color:var(--gold-border);color:var(--gold);">⏳ Verificando disponibilidade...</div>';
+  renderBookingResume('main');
+  document.getElementById('slotsArea').innerHTML='<div class="slot-empty" style="border-color:var(--gold-border);color:var(--gold);">Verificando disponibilidade...</div>';
   // Para polling anterior e inicia para esta data
   if(activePolling.main) clearInterval(activePolling.main);
   refreshAndRenderSlots(selDate,'slotsArea',onSlotMain,y,m,d);
@@ -1981,16 +2689,14 @@ function onSlotMain(slot){
   selSlot=slot;
   document.querySelectorAll('#slotsArea .slot').forEach(s=>s.classList.toggle('slot-selected',s.dataset.slot===slot));
   const bf=document.getElementById('bookingForm');bf.classList.add('show');
-  const r=document.getElementById('resumoAgendamento');
-  const dt=new Date(selDate+'T12:00:00');
-  r.style.display='block';r.innerHTML=`📅 <strong>${dt.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'})}</strong> às <strong>${slot}</strong>`;
+  renderBookingResume('main');
 }
 
 document.getElementById('prevMonth').addEventListener('click',()=>{
   if(activePolling.main){clearInterval(activePolling.main);activePolling.main=null;}
   if(mainM===0){mainM=11;mainY--;}else mainM--;
   selDate=null;selSlot=null;renderMain();
-  document.getElementById('slotsArea').innerHTML='<div class="slot-empty">← Selecione uma data no calendário</div>';
+  document.getElementById('slotsArea').innerHTML='<div class="slot-empty">Selecione uma data no calendario</div>';
   document.getElementById('bookingForm').classList.remove('show');
   document.getElementById('bookingSuccess').classList.remove('show');
 });
@@ -1998,7 +2704,7 @@ document.getElementById('nextMonth').addEventListener('click',()=>{
   if(activePolling.main){clearInterval(activePolling.main);activePolling.main=null;}
   if(mainM===11){mainM=0;mainY++;}else mainM++;
   selDate=null;selSlot=null;renderMain();
-  document.getElementById('slotsArea').innerHTML='<div class="slot-empty">← Selecione uma data no calendário</div>';
+  document.getElementById('slotsArea').innerHTML='<div class="slot-empty">Selecione uma data no calendario</div>';
   document.getElementById('bookingForm').classList.remove('show');
   document.getElementById('bookingSuccess').classList.remove('show');
 });
@@ -2009,8 +2715,8 @@ function onSelMod(y,m,d,el,gid){
   clrSel(gid);el.classList.add('selected');
   selDateM=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
   selSlotM=null;
-  const r=document.getElementById('resumoAgendamentoM');if(r)r.style.display='none';
-  document.getElementById('slotsAreaM').innerHTML='<div class="slot-empty" style="border-color:var(--gold-border);color:var(--gold);">⏳ Verificando disponibilidade...</div>';
+  renderBookingResume('modal');
+  document.getElementById('slotsAreaM').innerHTML='<div class="slot-empty" style="border-color:var(--gold-border);color:var(--gold);">Verificando disponibilidade...</div>';
   if(activePolling.modal) clearInterval(activePolling.modal);
   refreshAndRenderSlots(selDateM,'slotsAreaM',onSlotMod,y,m,d);
   activePolling.modal = setInterval(async()=>{
@@ -2022,21 +2728,20 @@ function onSelMod(y,m,d,el,gid){
 function onSlotMod(slot){
   selSlotM=slot;
   document.querySelectorAll('#slotsAreaM .slot').forEach(s=>s.classList.toggle('slot-selected',s.dataset.slot===slot));
-  const r=document.getElementById('resumoAgendamentoM');
-  if(r&&selDateM){const dt=new Date(selDateM+'T12:00:00');r.style.display='block';r.innerHTML=`📅 <strong>${dt.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'})}</strong> às <strong>${slot}</strong>`;}
+  renderBookingResume('modal');
 }
 
 document.getElementById('prevMonthM').addEventListener('click',()=>{
   if(activePolling.modal){clearInterval(activePolling.modal);activePolling.modal=null;}
   if(modM===0){modM=11;modY--;}else modM--;
   selDateM=null;selSlotM=null;renderModal();
-  document.getElementById('slotsAreaM').innerHTML='<div class="slot-empty">← Selecione uma data</div>';
+  document.getElementById('slotsAreaM').innerHTML='<div class="slot-empty">Selecione uma data</div>';
 });
 document.getElementById('nextMonthM').addEventListener('click',()=>{
   if(activePolling.modal){clearInterval(activePolling.modal);activePolling.modal=null;}
   if(modM===11){modM=0;modY++;}else modM++;
   selDateM=null;selSlotM=null;renderModal();
-  document.getElementById('slotsAreaM').innerHTML='<div class="slot-empty">← Selecione uma data</div>';
+  document.getElementById('slotsAreaM').innerHTML='<div class="slot-empty">Selecione uma data</div>';
 });
 
 // renderSlots — silent=true não mostra o spinner, só atualiza
@@ -2046,7 +2751,7 @@ function renderSlots(dateStr,areaId,onSel,y,m,d,silent=false){
   // Guarda o slot selecionado atualmente para re-selecionar após refresh
   const currentSelected = areaId==='slotsArea' ? selSlot : selSlotM;
 
-  const isSat=new Date(y,m,d).getDay()===6;const max=isSat?'17:00':'19:00';
+  const isSat=new Date(y,m,d).getDay()===6;const max=isSat ? '17:00' : '19:00';
   const slots=ALL_SLOTS.filter(s=>s<=max);
 
   const grid=document.createElement('div');grid.className='slots-grid';
@@ -2055,7 +2760,7 @@ function renderSlots(dateStr,areaId,onSel,y,m,d,silent=false){
     const expired = isSlotExpired(dateStr, slot);
     const blocked = taken || expired;
     const div=document.createElement('div');
-    div.className='slot'+(blocked?' slot-taken':'')+(expired?' slot-expired':'');
+    div.className='slot'+(blocked ? ' slot-taken' : '')+(expired ? ' slot-expired' : '');
     if(!blocked && slot===currentSelected) div.classList.add('slot-selected');
     div.textContent=slot;div.dataset.slot=slot;
     if(expired) div.title='Horário encerrado para hoje';
@@ -2069,10 +2774,10 @@ function renderSlots(dateStr,areaId,onSel,y,m,d,silent=false){
   area.appendChild(grid);
 }
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // CONFIRM BOOKINGS — salva no shared storage
 // com estrutura aninhada por data
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 async function confirmBooking(){
   const name=document.getElementById('clientName').value.trim();
   const phone=document.getElementById('clientPhone').value.trim();
@@ -2092,7 +2797,7 @@ async function confirmBooking(){
     await refreshAndRenderSlots(selDate,'slotsArea',onSlotMain,+pts[0],+pts[1]-1,+pts[2]);
     selSlot=null;
     document.getElementById('bookingForm').classList.remove('show');
-    document.getElementById('resumoAgendamento').style.display='none';
+    renderBookingResume('main');
     return;
   }
 
@@ -2104,7 +2809,7 @@ async function confirmBooking(){
       await refreshAndRenderSlots(selDate,'slotsArea',onSlotMain,+pts[0],+pts[1]-1,+pts[2]);
       selSlot=null;
       document.getElementById('bookingForm').classList.remove('show');
-      document.getElementById('resumoAgendamento').style.display='none';
+      renderBookingResume('main');
       return;
     }
   } catch (err) {
@@ -2118,10 +2823,11 @@ async function confirmBooking(){
   const dt=new Date(selDate+'T12:00:00');
   const df=dt.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'});
   document.getElementById('successText').textContent=`${name}, horário das ${selSlot} em ${df} reservado para ${service}.`;
-  const msg=`Olá! Acabei de agendar na Jr_barbearia.\n\n📅 ${df}\n🕐 ${selSlot}\n✂️ ${service}\n👤 ${name}\n\nQuero confirmar meu agendamento!`;
-  document.getElementById('successWA').href=`https://wa.me/5563992777323?text=${encodeURIComponent(msg)}`;
+  const waUrl=`https://wa.me/5563992777323?text=${encodeURIComponent(msg)}`;
+  document.getElementById('successWA').href=waUrl;
   const pts=selDate.split('-');
   renderSlots(selDate,'slotsArea',onSlotMain,+pts[0],+pts[1]-1,+pts[2]);
+  setTimeout(()=>{ window.location.href = waUrl; }, 250);
 }
 
 async function confirmBookingModal(){
@@ -2141,8 +2847,7 @@ async function confirmBookingModal(){
     const pts=selDateM.split('-');
     await refreshAndRenderSlots(selDateM,'slotsAreaM',onSlotMod,+pts[0],+pts[1]-1,+pts[2]);
     selSlotM=null;
-    const r=document.getElementById('resumoAgendamentoM');
-    if(r) r.style.display='none';
+    renderBookingResume('modal');
     return;
   }
 
@@ -2153,8 +2858,7 @@ async function confirmBookingModal(){
       const pts=selDateM.split('-');
       await refreshAndRenderSlots(selDateM,'slotsAreaM',onSlotMod,+pts[0],+pts[1]-1,+pts[2]);
       selSlotM=null;
-      const r=document.getElementById('resumoAgendamentoM');
-      if(r) r.style.display='none';
+      renderBookingResume('modal');
       return;
     }
   } catch (err) {
@@ -2167,15 +2871,17 @@ async function confirmBookingModal(){
   const dt=new Date(selDateM+'T12:00:00');
   const df=dt.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'});
   document.getElementById('successTextM').textContent=`${name}, horário das ${selSlotM} em ${df} reservado para ${service}!`;
-  const msg=`Olá! Acabei de agendar na Jr_barbearia.\n\n📅 ${df}\n🕐 ${selSlotM}\n✂️ ${service}\n👤 ${name}\n\nQuero confirmar meu agendamento!`;
-  document.getElementById('successWAM').href=`https://wa.me/5563992777323?text=${encodeURIComponent(msg)}`;
+  const waUrl=`https://wa.me/5563992777323?text=${encodeURIComponent(msg)}`;
+  document.getElementById('successWAM').href=waUrl;
   const pts=selDateM.split('-');
   renderSlots(selDateM,'slotsAreaM',onSlotMod,+pts[0],+pts[1]-1,+pts[2]);
+  setTimeout(()=>{ window.location.href = waUrl; }, 250);
 }
 
 function openModal(service){
   document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden';
   if(service){const s=document.getElementById('serviceSelectM');for(let i=0;i<s.options.length;i++){if(s.options[i].value.startsWith(service)){s.selectedIndex=i;break;}}}
+  syncBookingServiceUI('modal');
 }
 function closeModal(){
   document.getElementById('modalOverlay').classList.remove('open');
@@ -2188,18 +2894,22 @@ const navbar=document.getElementById('navbar');
 window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>40));
 document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('navlinks').classList.toggle('open'));
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navlinks').classList.remove('open')));
+document.getElementById('serviceSelect').addEventListener('change',()=>syncBookingServiceUI('main'));
+document.getElementById('serviceSelectM').addEventListener('change',()=>syncBookingServiceUI('modal'));
 
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // INIT
-// ─────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 (async()=>{
   await loadBookings();
   renderMain();
   renderModal();
   renderCart();
+  syncBookingServiceUI('main');
+  syncBookingServiceUI('modal');
 })();
 </script>
 </body>
