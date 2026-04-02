@@ -260,6 +260,84 @@ section{padding:100px 5%;}
 .success-title{font-family:var(--display);font-size:1.7rem;letter-spacing:4px;color:var(--gold);margin-bottom:8px;font-weight:700;}
 .success-text{color:var(--white-dim);font-size:.88rem;line-height:1.7;font-family:var(--body);font-style:italic;}
 
+/* PAINEL */
+#painel{display:none;position:fixed;inset:0;z-index:985;padding:104px 5% 40px;background:rgba(5,5,5,.88);backdrop-filter:blur(18px);overflow:auto;}
+#painel.open{display:block;}
+#painel::before{content:'GESTAO';position:absolute;top:32px;right:24px;font-family:var(--display);font-size:18rem;letter-spacing:8px;color:rgba(245,241,235,.03);pointer-events:none;line-height:.9;}
+body.admin-open{overflow:hidden;}
+.admin-shell{position:relative;max-width:1260px;margin:0 auto;}
+.admin-shell-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 24px;border:1px solid var(--gold-border);background:linear-gradient(180deg,rgba(245,241,235,.07),rgba(255,255,255,.02));box-shadow:0 20px 60px rgba(0,0,0,.24);margin-bottom:18px;}
+.admin-shell-brand{display:flex;align-items:center;gap:14px;}
+.admin-shell-brand-mark{width:52px;height:52px;border-radius:18px;overflow:hidden;border:1px solid rgba(245,241,235,.16);background:#101010;display:flex;align-items:center;justify-content:center;}
+.admin-shell-brand-mark img{width:100%;height:100%;object-fit:cover;display:block;}
+.admin-shell-kicker{font-family:var(--sans);font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+.admin-shell-title{font-family:var(--display);font-size:1.28rem;letter-spacing:3px;}
+.admin-shell-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.admin-shell-user{font-family:var(--sans);font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--white-dim);}
+.admin-shell-btn{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 16px;border:1px solid rgba(245,241,235,.14);background:transparent;color:var(--white);font-family:var(--sans);font-size:.62rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .22s;}
+.admin-shell-btn:hover{border-color:var(--gold);color:var(--gold);}
+.admin-shell-btn.primary{background:var(--gold);color:var(--black);border-color:var(--gold);}
+.admin-shell-btn.primary:hover{background:var(--gold-light);color:var(--black);}
+.admin-auth-card{max-width:520px;margin:0 auto;border:1px solid var(--gold-border);background:linear-gradient(180deg,rgba(245,241,235,.08),rgba(255,255,255,.02));box-shadow:0 20px 60px rgba(0,0,0,.24);padding:28px 28px 24px;}
+.admin-auth-kicker{font-family:var(--sans);font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.admin-auth-title{font-family:var(--display);font-size:1.8rem;letter-spacing:2px;line-height:1.08;margin-bottom:12px;}
+.admin-auth-text{color:var(--white-dim);font-family:var(--body);font-size:1rem;line-height:1.8;margin-bottom:18px;}
+.admin-auth-hint{margin-top:14px;color:var(--white-dim);font-family:var(--sans);font-size:.64rem;letter-spacing:1.6px;line-height:1.7;}
+.painel-wrap{max-width:1200px;margin:0 auto;}
+.painel-lead{max-width:700px;margin-top:14px;color:var(--white-dim);font-family:var(--body);font-size:1.08rem;line-height:1.9;font-style:italic;}
+.painel-top{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:stretch;margin-top:44px;}
+.painel-note,.admin-panel{background:linear-gradient(180deg,rgba(245,241,235,.08),rgba(255,255,255,.02));border:1px solid var(--gold-border);box-shadow:0 20px 60px rgba(0,0,0,.24);backdrop-filter:blur(14px);}
+.painel-note{padding:26px 28px;display:flex;flex-direction:column;justify-content:space-between;gap:18px;}
+.painel-note-kicker,.admin-panel-kicker{font-family:var(--sans);font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:500;}
+.painel-note-title,.admin-panel-title{font-family:var(--display);font-size:1.7rem;letter-spacing:2px;line-height:1.06;}
+.painel-note-text{color:var(--white-dim);font-family:var(--body);font-size:1rem;line-height:1.8;}
+.painel-note-list{display:flex;flex-wrap:wrap;gap:10px;}
+.painel-note-chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid rgba(245,241,235,.12);font-family:var(--sans);font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--white-dim);}
+.painel-filters{padding:24px 24px 18px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-content:start;}
+.painel-filters .form-group:last-child{grid-column:1 / -1;}
+.admin-stats-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-top:20px;}
+.admin-stat-card{padding:22px 20px;border:1px solid var(--gold-border);background:linear-gradient(180deg,rgba(245,241,235,.06),rgba(255,255,255,.015));}
+.admin-stat-label{font-family:var(--sans);font-size:.56rem;letter-spacing:3px;text-transform:uppercase;color:var(--white-dim);}
+.admin-stat-value{font-family:var(--display);font-size:2.35rem;letter-spacing:3px;color:var(--gold);margin:10px 0 6px;}
+.admin-stat-meta{color:var(--white-dim);font-family:var(--body);font-size:.95rem;line-height:1.6;}
+.admin-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:24px;margin-top:24px;align-items:start;}
+.admin-panel{padding:24px;}
+.admin-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap;}
+.admin-panel-copy{color:var(--white-dim);font-family:var(--body);font-size:.98rem;line-height:1.75;max-width:560px;}
+.admin-panel-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border:1px solid rgba(245,241,235,.12);font-family:var(--sans);font-size:.58rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);}
+.admin-bookings-list{display:flex;flex-direction:column;gap:12px;}
+.admin-empty{padding:28px;border:1px dashed var(--gold-border);text-align:center;color:var(--white-dim);font-family:var(--sans);font-size:.7rem;letter-spacing:2px;text-transform:uppercase;}
+.admin-booking-row{padding:18px;border:1px solid rgba(245,241,235,.12);background:rgba(255,255,255,.02);}
+.admin-booking-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.admin-booking-name{font-family:var(--display);font-size:1.1rem;letter-spacing:1.4px;}
+.admin-booking-service{margin-top:6px;color:var(--white-dim);font-family:var(--body);font-size:1rem;line-height:1.55;}
+.admin-booking-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.admin-meta-chip{display:inline-flex;align-items:center;padding:7px 10px;border:1px solid rgba(245,241,235,.1);font-family:var(--sans);font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--white-dim);}
+.admin-status-pill{display:inline-flex;align-items:center;padding:8px 12px;border:1px solid rgba(245,241,235,.16);font-family:var(--sans);font-size:.58rem;letter-spacing:2px;text-transform:uppercase;}
+.status-confirmado{color:#d8e6ff;border-color:rgba(216,230,255,.22);background:rgba(216,230,255,.08);}
+.status-atendimento{color:#fff6d4;border-color:rgba(255,246,212,.24);background:rgba(255,246,212,.08);}
+.status-finalizado{color:#d9ffd9;border-color:rgba(217,255,217,.24);background:rgba(217,255,217,.08);}
+.status-faltou{color:#ffd8d8;border-color:rgba(255,216,216,.24);background:rgba(255,216,216,.08);}
+.admin-booking-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.admin-action-btn,.admin-link-btn,.stock-chip-btn{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:8px 12px;border:1px solid rgba(245,241,235,.14);background:transparent;color:var(--white-dim);font-family:var(--sans);font-size:.58rem;letter-spacing:2px;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .22s;}
+.admin-action-btn:hover,.admin-link-btn:hover,.stock-chip-btn:hover{border-color:var(--gold);color:var(--gold);}
+.admin-action-btn.active{background:var(--gold);border-color:var(--gold);color:var(--black);}
+.admin-link-btn{background:rgba(255,255,255,.04);}
+.admin-stock-form{display:grid;grid-template-columns:1.1fr .45fr .45fr auto;gap:10px;margin-bottom:18px;align-items:end;}
+.admin-stock-grid{display:grid;gap:12px;}
+.admin-stock-card{padding:18px;border:1px solid rgba(245,241,235,.12);background:rgba(255,255,255,.02);}
+.admin-stock-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+.admin-stock-name{font-family:var(--display);font-size:1.02rem;letter-spacing:1.2px;}
+.admin-stock-cat{margin-top:6px;color:var(--white-dim);font-family:var(--sans);font-size:.55rem;letter-spacing:2px;text-transform:uppercase;}
+.admin-stock-badge{padding:7px 10px;border:1px solid rgba(245,241,235,.14);font-family:var(--sans);font-size:.56rem;letter-spacing:2px;text-transform:uppercase;color:var(--white-dim);}
+.admin-stock-badge.low{color:#ffd8d8;border-color:rgba(255,216,216,.24);background:rgba(255,216,216,.07);}
+.admin-stock-level{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:16px;}
+.admin-stock-qty{font-family:var(--display);font-size:2rem;color:var(--gold);line-height:1;}
+.admin-stock-min{color:var(--white-dim);font-family:var(--body);font-size:.95rem;}
+.admin-stock-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.stock-chip-btn{min-width:42px;padding-inline:0;}
+.stock-chip-btn.danger:hover{border-color:#ffd8d8;color:#ffd8d8;}
+
 /* â”€â”€ CONTATO â”€â”€ */
 #contato{background:var(--black-2);}
 .contato-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;max-width:1200px;margin:52px auto 0;align-items:start;}
@@ -295,6 +373,8 @@ footer{background:var(--black);border-top:1px solid var(--gold-border);padding:5
 .footer-links a{color:var(--white-dim);text-decoration:none;font-family:var(--sans);font-size:.78rem;letter-spacing:1px;transition:color .2s;font-weight:300;}
 .footer-links a:hover{color:var(--gold);}
 .footer-bottom{max-width:1200px;margin:0 auto;padding-top:24px;border-top:1px solid var(--gold-border);display:flex;justify-content:space-between;align-items:center;font-size:.65rem;color:var(--white-dim);flex-wrap:wrap;gap:8px;font-family:var(--sans);letter-spacing:2px;}
+.footer-admin-trigger{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:0 14px;border:1px solid rgba(245,241,235,.12);background:transparent;color:var(--white-dim);font-family:var(--sans);font-size:.58rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .22s;}
+.footer-admin-trigger:hover{border-color:var(--gold);color:var(--gold);}
 
 /* â”€â”€ FLOATING ACTIONS â”€â”€ */
 .floating-actions{position:fixed;right:28px;bottom:28px;z-index:890;display:flex;flex-direction:column;align-items:flex-end;gap:12px;}
@@ -1333,11 +1413,17 @@ footer{
 
 /* RESP */
 @media(max-width:900px){
-  .sobre-wrap,.booking-grid,.contato-grid,.modal-grid,.detail-inner,.hero-stage{grid-template-columns:1fr;gap:28px;}
+  .sobre-wrap,.booking-grid,.contato-grid,.modal-grid,.detail-inner,.hero-stage,.painel-top,.admin-grid{grid-template-columns:1fr;gap:28px;}
   .detail-art{border-right:none;border-bottom:1px solid var(--gold-border);padding:28px;}
   .footer-grid{grid-template-columns:1fr;gap:24px;}
   .svc-grid{grid-template-columns:1fr;}
   .amb-grid{grid-template-columns:1fr;}
+  .admin-stats-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .admin-stock-form{grid-template-columns:1fr 1fr;}
+  .admin-stock-form .form-group:first-child{grid-column:1 / -1;}
+  .admin-stock-form .btn-gold{grid-column:1 / -1;justify-content:center;}
+  #painel{padding-top:92px;}
+  .admin-shell-bar{padding:16px 18px;}
   nav{top:10px;padding:0 18px;height:66px;}
   .nav-links{display:none;position:absolute;top:calc(100% + 10px);left:0;right:0;flex-direction:column;background:rgba(8,8,7,.98);padding:20px 5%;border:1px solid var(--gold-border);border-radius:28px;gap:16px;backdrop-filter:blur(20px);}
   .nav-links.open{display:flex;}
@@ -1358,6 +1444,14 @@ footer{
   .form-row{grid-template-columns:1fr;}
   .professional-picker{grid-template-columns:1fr;}
   .hero-stats{grid-template-columns:1fr;}
+  .admin-stats-grid{grid-template-columns:1fr;}
+  .painel-filters{grid-template-columns:1fr;}
+  .admin-booking-head,.admin-stock-top,.admin-stock-level{flex-direction:column;align-items:flex-start;}
+  .admin-stock-form{grid-template-columns:1fr;}
+  .admin-stock-form .form-group,.admin-stock-form .btn-gold{grid-column:auto;}
+  .admin-shell-bar,.admin-shell-brand,.admin-shell-actions{align-items:flex-start;}
+  .admin-shell-actions{width:100%;}
+  .admin-shell-btn{width:100%;}
   .cart-panel{width:100vw;}
   .floating-actions{right:18px;bottom:18px;}
   nav{width:94%;}
@@ -1819,6 +1913,143 @@ footer{
   </div>
 </section>
 
+<!-- PAINEL -->
+<section id="painel" aria-hidden="true">
+  <div class="admin-shell">
+    <div class="admin-shell-bar">
+      <div class="admin-shell-brand">
+        <span class="admin-shell-brand-mark" aria-hidden="true">
+          <img src="jr-logo.jpg" alt="Logo JR Barbearia">
+        </span>
+        <div>
+          <div class="admin-shell-kicker">Área do Proprietário</div>
+          <div class="admin-shell-title">Painel Administrativo JR Barbearia</div>
+        </div>
+      </div>
+      <div class="admin-shell-actions">
+        <span class="admin-shell-user" id="adminUserLabel">Acesso privado</span>
+        <button type="button" class="admin-shell-btn" id="adminRefreshBtn" style="display:none;" onclick="forceRefreshAdminBookings()">Atualizar agenda</button>
+        <button type="button" class="admin-shell-btn" id="adminLogoutBtn" style="display:none;" onclick="logoutAdmin()">Sair</button>
+        <button type="button" class="admin-shell-btn primary" onclick="closeAdminPanel()">Fechar</button>
+      </div>
+    </div>
+
+    <div class="admin-auth-card" id="adminAuthCard">
+      <div class="admin-auth-kicker">Login seguro</div>
+      <h3 class="admin-auth-title">Entre para gerenciar agenda, estoque e atendimento.</h3>
+      <p class="admin-auth-text">Esse ambiente não aparece para clientes no fluxo normal do site. O acesso é liberado somente com as credenciais do proprietário.</p>
+      <div class="form-group">
+        <label class="form-label" for="adminEmail">E-mail do proprietário</label>
+        <input class="form-input" type="email" id="adminEmail" placeholder="seuemail@dominio.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="adminPassword">Senha</label>
+        <input class="form-input" type="password" id="adminPassword" placeholder="Sua senha">
+      </div>
+      <button type="button" class="btn-confirm" onclick="handleAdminLogin()">Entrar no Painel</button>
+      <p class="admin-auth-hint">Use uma conta criada no Supabase Auth. Depois do login, o painel libera a gestão do site sem ficar exposto para clientes.</p>
+    </div>
+
+    <div id="adminConsole" hidden>
+      <div class="painel-wrap">
+    <div class="reveal">
+      <div class="section-eyebrow">Painel Interno</div>
+      <h2 class="section-title">Gestão direta para<br><em>o dia a dia</em></h2>
+      <p class="painel-lead">Agenda, acompanhamento dos atendimentos e controle básico de estoque em uma só área. Tudo para reduzir improviso, acelerar o atendimento e dar mais visão ao dono da barbearia.</p>
+    </div>
+
+    <div class="painel-top">
+      <div class="painel-note reveal">
+        <div>
+          <div class="painel-note-kicker">Operação da casa</div>
+          <h3 class="painel-note-title">Menos conversa solta. Mais controle do atendimento.</h3>
+        </div>
+        <p class="painel-note-text">Acompanhe quem chega hoje, marque o status de cada cliente, filtre a agenda em segundos e veja rapidamente se algum produto precisa de reposição antes de faltar no balcão.</p>
+        <div class="painel-note-list">
+          <span class="painel-note-chip">Agenda do dia</span>
+          <span class="painel-note-chip">Status do cliente</span>
+          <span class="painel-note-chip">WhatsApp rápido</span>
+          <span class="painel-note-chip">Estoque baixo</span>
+        </div>
+      </div>
+
+      <div class="admin-panel reveal">
+        <div class="painel-filters">
+          <div class="form-group">
+            <label class="form-label" for="adminBookingScope">Vista</label>
+            <select class="form-select" id="adminBookingScope">
+              <option value="all">Tudo</option>
+              <option value="today">Hoje</option>
+              <option value="upcoming">Próximos dias</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="adminBookingStatus">Status</label>
+            <select class="form-select" id="adminBookingStatus">
+              <option value="all">Todos</option>
+              <option value="confirmado">Confirmado</option>
+              <option value="atendimento">Em atendimento</option>
+              <option value="finalizado">Finalizado</option>
+              <option value="faltou">Faltou</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="adminBookingSearch">Busca rápida</label>
+            <input class="form-input" type="text" id="adminBookingSearch" placeholder="Cliente, serviço ou profissional">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-stats-grid reveal" id="adminStats"></div>
+
+    <div class="admin-grid">
+      <div class="admin-panel reveal">
+        <div class="admin-panel-head">
+          <div>
+            <div class="admin-panel-kicker">Agenda</div>
+            <h3 class="admin-panel-title">Agendamentos com status</h3>
+            <p class="admin-panel-copy">Controle o fluxo do dia, marque quem já chegou e filtre rapidamente o que realmente precisa da sua atenção agora.</p>
+          </div>
+          <div class="admin-panel-badge" id="adminBookingCount">0 agendamentos</div>
+        </div>
+        <div class="admin-bookings-list" id="adminBookingsList"></div>
+      </div>
+
+      <div class="admin-panel reveal">
+        <div class="admin-panel-head">
+          <div>
+            <div class="admin-panel-kicker">Estoque Essencial</div>
+            <h3 class="admin-panel-title">Controle básico de produtos</h3>
+            <p class="admin-panel-copy">Registre o que entra, acompanhe o que está acabando e mantenha o atendimento sem risco de faltar item importante.</p>
+          </div>
+          <div class="admin-panel-badge" id="adminStockCount">0 itens</div>
+        </div>
+
+        <div class="admin-stock-form">
+          <div class="form-group">
+            <label class="form-label" for="adminStockName">Produto</label>
+            <input class="form-input" type="text" id="adminStockName" placeholder="Ex.: Pomada Matte Clay">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="adminStockQty">Qtd.</label>
+            <input class="form-input" type="number" id="adminStockQty" min="0" value="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="adminStockMin">Mín.</label>
+            <input class="form-input" type="number" id="adminStockMin" min="0" value="2">
+          </div>
+          <button type="button" class="btn-gold" onclick="addStockItem()">Adicionar</button>
+        </div>
+
+        <div class="admin-stock-grid" id="adminStockGrid"></div>
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTATO -->
 <section id="contato">
   <div style="max-width:1200px;margin:0 auto;" class="reveal">
@@ -1909,6 +2140,7 @@ footer{
   <div class="footer-bottom">
     <span>© 2025 Jr_barbearia – Dianópolis, TO.</span>
     <span>Feito pra quem manda ver.</span>
+    <button type="button" class="footer-admin-trigger" onclick="openAdminPanel()">Área do Proprietário</button>
   </div>
 </footer>
 
@@ -2175,6 +2407,9 @@ const STORAGE_KEY = 'jr_bookings_v3';
 const SUPABASE_URL = 'https://pjxromopwfqfhquommsv.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBqeHJvbW9wd2ZxZmhxdW9tbXN2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5Nzg0NjIsImV4cCI6MjA5MDU1NDQ2Mn0.cNWkAE3_L41fipd-5GtXjtQUTqO19FnSEFoAficidmY';
 const SUPABASE_TABLE = 'bookings';
+const SUPABASE_ADMIN_TABLE = 'admin_state';
+const ADMIN_STATE_ROW_ID = 'main';
+const ADMIN_SESSION_STORAGE_KEY = 'jr_admin_session_v1';
 
 // Cache local (objeto aninhado: data â†’ {slot â†’ dados})
 let bookings = {};
@@ -2328,6 +2563,7 @@ async function loadBookings() {
     storageReady = true;
     setSyncStatus('error', hasSupabaseConfig() ? 'Falha ao conectar agenda online' : 'Agenda local carregada neste aparelho');
   }
+  renderAdminPanel();
 }
 
 // Verifica se um slot estÃ¡ reservado
@@ -2358,10 +2594,12 @@ async function reserveBooking(dateStr, slot, data) {
     bookings = purgeOldDates(await readStoredBookings());
     writeLocalBookings(bookings);
     setSyncStatus('synced', 'Horário salvo na agenda online');
+    renderAdminPanel();
     return { ok: true };
   }
 
   await saveBooking(dateStr, slot, data);
+  renderAdminPanel();
   return { ok: true };
 }
 
@@ -2376,6 +2614,7 @@ async function refreshAndRenderSlots(dateStr, areaId, onSel, y, m, d) {
     setSyncStatus('synced', 'Horários sincronizados');
   }
   renderSlots(dateStr, areaId, onSel, y, m, d);
+  renderAdminPanel();
 }
 
 // Polling: atualiza os slots da data selecionada a cada 30s
@@ -2425,6 +2664,601 @@ const SERVICES={
 
 function formatMoney(value){
   return `R$ ${value.toFixed(2).replace('.',',')}`;
+}
+
+const STOCK_STORAGE_KEY = 'jr_stock_v1';
+const BOOKING_STATUS_STORAGE_KEY = 'jr_booking_status_v1';
+const BOOKING_STATUSES = {
+  confirmado:'Confirmado',
+  atendimento:'Em atendimento',
+  finalizado:'Finalizado',
+  faltou:'Faltou',
+};
+const DEFAULT_STOCK_ITEMS = PRODUCTS.map(product=>({
+  id:`stock-${product.id}`,
+  name:product.name,
+  category:product.cat,
+  qty:6,
+  min:2,
+  price:product.price,
+}));
+
+let stockItems = [];
+let bookingStatuses = {};
+let adminSession = null;
+let adminStateLoaded = false;
+let adminBookingsPolling = null;
+
+function escapeHtml(value=''){
+  return String(value)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
+}
+
+function readJSONStorage(key, fallback){
+  try{
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  }catch(err){
+    console.error(`Storage read error (${key}):`, err);
+    return fallback;
+  }
+}
+
+function writeJSONStorage(key, value){
+  try{
+    localStorage.setItem(key, JSON.stringify(value));
+  }catch(err){
+    console.error(`Storage write error (${key}):`, err);
+  }
+}
+
+function removeJSONStorage(key){
+  try{
+    localStorage.removeItem(key);
+  }catch(err){
+    console.error(`Storage remove error (${key}):`, err);
+  }
+}
+
+function getAdminSession(){
+  if(adminSession) return adminSession;
+  const saved = readJSONStorage(ADMIN_SESSION_STORAGE_KEY, null);
+  adminSession = saved;
+  return adminSession;
+}
+
+function saveAdminSession(session){
+  adminSession = session;
+  writeJSONStorage(ADMIN_SESSION_STORAGE_KEY, session);
+}
+
+function clearAdminSession(){
+  adminSession = null;
+  removeJSONStorage(ADMIN_SESSION_STORAGE_KEY);
+}
+
+function isAdminAuthenticated(){
+  const session = getAdminSession();
+  if(!session || !session.access_token) return false;
+  if(session.expires_at && Date.now() >= session.expires_at * 1000) return false;
+  return true;
+}
+
+function adminAuthHeaders(extra = {}){
+  const session = getAdminSession();
+  return supabaseHeaders({
+    Authorization: `Bearer ${session?.access_token || SUPABASE_ANON_KEY}`,
+    ...extra,
+  });
+}
+
+async function signInAdmin(email, password){
+  const response = await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`, {
+    method:'POST',
+    headers:supabaseHeaders(),
+    body:JSON.stringify({ email, password }),
+  });
+  const payload = await response.json().catch(()=>({}));
+  if(!response.ok){
+    throw new Error(payload.error_description || payload.msg || 'Falha no login do painel');
+  }
+  saveAdminSession(payload);
+  return payload;
+}
+
+async function readRemoteAdminState(){
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_ADMIN_TABLE}?id=eq.${ADMIN_STATE_ROW_ID}&select=stock,booking_statuses`, {
+    method:'GET',
+    headers:adminAuthHeaders(),
+  });
+  if(response.status === 406) return null;
+  if(!response.ok){
+    throw new Error(`Admin state read error: ${response.status}`);
+  }
+  const rows = await response.json();
+  return rows[0] || null;
+}
+
+async function writeRemoteAdminState(){
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_ADMIN_TABLE}`, {
+    method:'POST',
+    headers:adminAuthHeaders({
+      Prefer:'resolution=merge-duplicates,return=minimal',
+    }),
+    body:JSON.stringify([{
+      id: ADMIN_STATE_ROW_ID,
+      stock: stockItems,
+      booking_statuses: bookingStatuses,
+    }]),
+  });
+  if(!response.ok){
+    const errorText = await response.text().catch(()=>'');
+    throw new Error(errorText || `Admin state write error: ${response.status}`);
+  }
+}
+
+async function syncAdminStateFromRemote(){
+  if(!isAdminAuthenticated()) return;
+  const remote = await readRemoteAdminState();
+  if(remote){
+    stockItems = Array.isArray(remote.stock) ? remote.stock : DEFAULT_STOCK_ITEMS.map(item=>({ ...item }));
+    bookingStatuses = remote.booking_statuses && typeof remote.booking_statuses === 'object' ? remote.booking_statuses : {};
+    saveStockItems();
+    saveBookingStatuses();
+  }else{
+    await persistAdminState();
+  }
+  adminStateLoaded = true;
+}
+
+async function persistAdminState(){
+  if(!isAdminAuthenticated()) return;
+  await writeRemoteAdminState();
+}
+
+function loadAdminState(){
+  const storedStock = readJSONStorage(STOCK_STORAGE_KEY, null);
+  const hasStoredStock = Array.isArray(storedStock);
+  stockItems = hasStoredStock ? storedStock : DEFAULT_STOCK_ITEMS.map(item=>({ ...item }));
+  bookingStatuses = readJSONStorage(BOOKING_STATUS_STORAGE_KEY, {}) || {};
+  if (!hasStoredStock) {
+    writeJSONStorage(STOCK_STORAGE_KEY, stockItems);
+  }
+  adminStateLoaded = true;
+}
+
+function saveStockItems(){
+  writeJSONStorage(STOCK_STORAGE_KEY, stockItems);
+}
+
+function saveBookingStatuses(){
+  writeJSONStorage(BOOKING_STATUS_STORAGE_KEY, bookingStatuses);
+}
+
+function buildBookingStatusKey(dateStr, slot){
+  return `${dateStr}|${slot}`;
+}
+
+function normalizeBookingStatus(status){
+  return BOOKING_STATUSES[status] ? status : 'confirmado';
+}
+
+function splitStoredService(serviceValue=''){
+  const chunks = String(serviceValue).split('|').map(part=>part.trim()).filter(Boolean);
+  const base = chunks[0] || '';
+  const professionalChunk = chunks.find(part=>part.toLowerCase().startsWith('profissional:'));
+  return {
+    service: base,
+    professional: professionalChunk ? professionalChunk.split(':').slice(1).join(':').trim() : '',
+  };
+}
+
+function compareBookingEntries(a,b){
+  return a.date.localeCompare(b.date) || a.slot.localeCompare(b.slot) || a.name.localeCompare(b.name);
+}
+
+function isCurrentMonth(dateStr){
+  const current = new Date();
+  const dt = new Date(`${dateStr}T12:00:00`);
+  return dt.getFullYear() === current.getFullYear() && dt.getMonth() === current.getMonth();
+}
+
+function isHaircutService(service=''){
+  return String(service).toLowerCase().includes('corte');
+}
+
+function findStockItemMatch(cartItem){
+  return stockItems.find(stock=>stock.id === `stock-${cartItem.id}` || stock.name === cartItem.name);
+}
+
+function applySaleToStock(cartItems){
+  if(!Array.isArray(cartItems) || !cartItems.length) return;
+  if(!adminStateLoaded) loadAdminState();
+  let changed = false;
+  cartItems.forEach(cartItem=>{
+    const match = findStockItemMatch(cartItem);
+    if(!match) return;
+    match.qty = Math.max(0, Number(match.qty) - Number(cartItem.qty || 0));
+    changed = true;
+  });
+  if(!changed) return;
+  saveStockItems();
+  renderAdminPanel();
+  persistAdminState().catch(err=>console.error(err));
+}
+
+function getBookingEntries(){
+  const entries = [];
+  Object.keys(bookings || {}).forEach(dateStr=>{
+    const daySlots = bookings[dateStr] || {};
+    Object.keys(daySlots).forEach(slot=>{
+      const item = daySlots[slot] || {};
+      const parsed = splitStoredService(item.service || '');
+      entries.push({
+        date: dateStr,
+        slot,
+        name: item.name || 'Cliente',
+        phone: item.phone || '',
+        service: parsed.service || item.service || 'Serviço',
+        professional: parsed.professional || '',
+        status: normalizeBookingStatus(bookingStatuses[buildBookingStatusKey(dateStr, slot)]),
+      });
+    });
+  });
+  return entries.sort(compareBookingEntries);
+}
+
+function pruneBookingStatuses(){
+  const validKeys = new Set(getBookingEntries().map(entry=>buildBookingStatusKey(entry.date, entry.slot)));
+  const next = {};
+  Object.keys(bookingStatuses).forEach(key=>{
+    if(validKeys.has(key)) next[key] = normalizeBookingStatus(bookingStatuses[key]);
+  });
+  bookingStatuses = next;
+  saveBookingStatuses();
+}
+
+function formatAdminDate(dateStr){
+  const dt = new Date(`${dateStr}T12:00:00`);
+  const isToday = dateStr === todayStr();
+  const label = dt.toLocaleDateString('pt-BR',{weekday:'short',day:'numeric',month:'short'});
+  return isToday ? `Hoje · ${label}` : label;
+}
+
+function normalizePhoneToWhatsApp(phone=''){
+  let digits = String(phone).replace(/\D/g,'');
+  if(!digits) return '';
+  if(digits.length === 10 || digits.length === 11) digits = `55${digits}`;
+  return digits;
+}
+
+function buildClientReminderUrl(entry){
+  const number = normalizePhoneToWhatsApp(entry.phone);
+  if(!number) return '';
+  const dt = new Date(`${entry.date}T12:00:00`);
+  const formattedDate = dt.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'});
+  const message = [
+    `Olá, ${entry.name}!`,
+    '',
+    'Passando para lembrar do seu horário na JR Barbearia.',
+    `Serviço: ${entry.service}`,
+    `Profissional: ${entry.professional || 'A definir na casa'}`,
+    `Data: ${formattedDate}`,
+    `Horário: ${entry.slot}`,
+    '',
+    'Se precisar ajustar algo, responda por aqui.'
+  ].join('\n');
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+}
+
+function getAdminBookingFilters(){
+  const scope = (document.getElementById('adminBookingScope') || {}).value || 'all';
+  const status = (document.getElementById('adminBookingStatus') || {}).value || 'all';
+  const search = ((document.getElementById('adminBookingSearch') || {}).value || '').trim().toLowerCase();
+  return { scope, status, search };
+}
+
+function filterAdminBookings(entries){
+  const filters = getAdminBookingFilters();
+  return entries.filter(entry=>{
+    if(filters.scope === 'today' && entry.date !== todayStr()) return false;
+    if(filters.scope === 'upcoming' && entry.date <= todayStr()) return false;
+    if(filters.status !== 'all' && entry.status !== filters.status) return false;
+    if(filters.search){
+      const haystack = `${entry.name} ${entry.phone} ${entry.service} ${entry.professional}`.toLowerCase();
+      if(!haystack.includes(filters.search)) return false;
+    }
+    return true;
+  });
+}
+
+function renderAdminStats(){
+  const container = document.getElementById('adminStats');
+  if(!container) return;
+  const entries = getBookingEntries();
+  const todayEntries = entries.filter(entry=>entry.date === todayStr());
+  const monthCuts = entries.filter(entry=>isCurrentMonth(entry.date) && isHaircutService(entry.service));
+  const confirmedEntries = entries.filter(entry=>entry.status === 'confirmado');
+  const finalizedEntries = entries.filter(entry=>entry.status === 'finalizado');
+  const lowStockCount = stockItems.filter(item=>Number(item.qty) <= Number(item.min)).length;
+  container.innerHTML = `
+    <div class="admin-stat-card">
+      <div class="admin-stat-label">Atendimentos de Hoje</div>
+      <div class="admin-stat-value">${todayEntries.length}</div>
+      <div class="admin-stat-meta">Clientes previstos para o dia atual.</div>
+    </div>
+    <div class="admin-stat-card">
+      <div class="admin-stat-label">Cortes no Mês</div>
+      <div class="admin-stat-value">${monthCuts.length}</div>
+      <div class="admin-stat-meta">Todos os serviços com corte agendados neste mês.</div>
+    </div>
+    <div class="admin-stat-card">
+      <div class="admin-stat-label">Confirmados</div>
+      <div class="admin-stat-value">${confirmedEntries.length}</div>
+      <div class="admin-stat-meta">Horários aguardando atendimento.</div>
+    </div>
+    <div class="admin-stat-card">
+      <div class="admin-stat-label">Finalizados</div>
+      <div class="admin-stat-value">${finalizedEntries.length}</div>
+      <div class="admin-stat-meta">Atendimentos concluídos no painel.</div>
+    </div>
+    <div class="admin-stat-card">
+      <div class="admin-stat-label">Estoque Baixo</div>
+      <div class="admin-stat-value">${lowStockCount}</div>
+      <div class="admin-stat-meta">Itens pedindo reposição antes de faltar.</div>
+    </div>
+  `;
+}
+
+function renderAdminBookings(){
+  const list = document.getElementById('adminBookingsList');
+  const count = document.getElementById('adminBookingCount');
+  if(!list || !count) return;
+  const filtered = filterAdminBookings(getBookingEntries());
+  count.textContent = `${filtered.length} ${filtered.length === 1 ? 'agendamento' : 'agendamentos'}`;
+  if(!filtered.length){
+    list.innerHTML = '<div class="admin-empty">Nenhum agendamento encontrado nesse filtro.</div>';
+    return;
+  }
+  list.innerHTML = filtered.map(entry=>{
+    const reminderUrl = buildClientReminderUrl(entry);
+    return `
+      <div class="admin-booking-row">
+        <div class="admin-booking-head">
+          <div>
+            <div class="admin-booking-name">${escapeHtml(entry.name)}</div>
+            <div class="admin-booking-service">${escapeHtml(entry.service)}${entry.professional ? ` · ${escapeHtml(entry.professional)}` : ''}</div>
+          </div>
+          <span class="admin-status-pill status-${entry.status}">${BOOKING_STATUSES[entry.status]}</span>
+        </div>
+        <div class="admin-booking-meta">
+          <span class="admin-meta-chip">${escapeHtml(formatAdminDate(entry.date))}</span>
+          <span class="admin-meta-chip">${escapeHtml(entry.slot)}</span>
+          <span class="admin-meta-chip">${escapeHtml(entry.phone || 'Sem WhatsApp')}</span>
+        </div>
+        <div class="admin-booking-actions">
+          <button type="button" class="admin-action-btn${entry.status==='confirmado' ? ' active' : ''}" data-admin-date="${entry.date}" data-admin-slot="${entry.slot}" data-admin-status="confirmado">Confirmado</button>
+          <button type="button" class="admin-action-btn${entry.status==='atendimento' ? ' active' : ''}" data-admin-date="${entry.date}" data-admin-slot="${entry.slot}" data-admin-status="atendimento">Em atendimento</button>
+          <button type="button" class="admin-action-btn${entry.status==='finalizado' ? ' active' : ''}" data-admin-date="${entry.date}" data-admin-slot="${entry.slot}" data-admin-status="finalizado">Finalizado</button>
+          <button type="button" class="admin-action-btn${entry.status==='faltou' ? ' active' : ''}" data-admin-date="${entry.date}" data-admin-slot="${entry.slot}" data-admin-status="faltou">Faltou</button>
+          ${reminderUrl ? `<a class="admin-link-btn" href="${reminderUrl}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderAdminStock(){
+  const grid = document.getElementById('adminStockGrid');
+  const count = document.getElementById('adminStockCount');
+  if(!grid || !count) return;
+  const sorted = [...stockItems].sort((a,b)=>(Number(a.qty) - Number(a.min)) - (Number(b.qty) - Number(b.min)) || a.name.localeCompare(b.name));
+  count.textContent = `${sorted.length} ${sorted.length === 1 ? 'item' : 'itens'}`;
+  if(!sorted.length){
+    grid.innerHTML = '<div class="admin-empty">Nenhum item cadastrado no estoque.</div>';
+    return;
+  }
+  grid.innerHTML = sorted.map(item=>{
+    const isLow = Number(item.qty) <= Number(item.min);
+    return `
+      <div class="admin-stock-card">
+        <div class="admin-stock-top">
+          <div>
+            <div class="admin-stock-name">${escapeHtml(item.name)}</div>
+            <div class="admin-stock-cat">${escapeHtml(item.category || 'manual')}</div>
+          </div>
+          <span class="admin-stock-badge${isLow ? ' low' : ''}">${isLow ? 'Reposição' : 'Estável'}</span>
+        </div>
+        <div class="admin-stock-level">
+          <div class="admin-stock-qty">${item.qty}</div>
+          <div class="admin-stock-min">Mínimo recomendado: ${item.min}</div>
+        </div>
+        <div class="admin-stock-actions">
+          <button type="button" class="stock-chip-btn" data-stock-id="${item.id}" data-stock-adjust="-1">-1</button>
+          <button type="button" class="stock-chip-btn" data-stock-id="${item.id}" data-stock-adjust="1">+1</button>
+          <button type="button" class="stock-chip-btn danger" data-stock-id="${item.id}" data-stock-remove="1">Remover</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderAdminPanel(){
+  if(!document.getElementById('painel')) return;
+  if(!adminStateLoaded) loadAdminState();
+  pruneBookingStatuses();
+  renderAdminStats();
+  renderAdminBookings();
+  renderAdminStock();
+}
+
+function updateBookingStatus(dateStr, slot, status){
+  bookingStatuses[buildBookingStatusKey(dateStr, slot)] = normalizeBookingStatus(status);
+  saveBookingStatuses();
+  renderAdminPanel();
+  persistAdminState().catch(err=>console.error(err));
+  showToast(`Status atualizado para ${BOOKING_STATUSES[normalizeBookingStatus(status)]}`);
+}
+
+function adjustStockQuantity(id, delta){
+  const item = stockItems.find(stock=>stock.id === id);
+  if(!item) return;
+  item.qty = Math.max(0, Number(item.qty) + Number(delta));
+  saveStockItems();
+  renderAdminPanel();
+  persistAdminState().catch(err=>console.error(err));
+}
+
+function removeStockItem(id){
+  stockItems = stockItems.filter(item=>item.id !== id);
+  saveStockItems();
+  renderAdminPanel();
+  persistAdminState().catch(err=>console.error(err));
+  showToast('Item removido do estoque');
+}
+
+function addStockItem(){
+  if(!adminStateLoaded) loadAdminState();
+  const nameEl = document.getElementById('adminStockName');
+  const qtyEl = document.getElementById('adminStockQty');
+  const minEl = document.getElementById('adminStockMin');
+  const name = (nameEl.value || '').trim();
+  const qty = Math.max(0, Number(qtyEl.value || 0));
+  const min = Math.max(0, Number(minEl.value || 0));
+  if(!name){
+    showToast('Informe o nome do produto');
+    return;
+  }
+  stockItems.unshift({
+    id:`stock-custom-${Date.now()}`,
+    name,
+    category:'manual',
+    qty,
+    min,
+    price:null,
+  });
+  saveStockItems();
+  nameEl.value = '';
+  qtyEl.value = '1';
+  minEl.value = '2';
+  renderAdminPanel();
+  persistAdminState().catch(err=>console.error(err));
+  showToast('Produto adicionado ao estoque');
+}
+
+function updateAdminAccessUI(){
+  const authCard = document.getElementById('adminAuthCard');
+  const consoleEl = document.getElementById('adminConsole');
+  const logoutBtn = document.getElementById('adminLogoutBtn');
+  const refreshBtn = document.getElementById('adminRefreshBtn');
+  const userLabel = document.getElementById('adminUserLabel');
+  const authenticated = isAdminAuthenticated();
+  if(authCard) authCard.hidden = authenticated;
+  if(consoleEl) consoleEl.hidden = !authenticated;
+  if(logoutBtn) logoutBtn.style.display = authenticated ? 'inline-flex' : 'none';
+  if(refreshBtn) refreshBtn.style.display = authenticated ? 'inline-flex' : 'none';
+  if(userLabel){
+    userLabel.textContent = authenticated
+      ? ((getAdminSession()?.user?.email || 'Painel liberado').toUpperCase())
+      : 'Acesso privado';
+  }
+}
+
+async function forceRefreshAdminBookings(showFeedback=true){
+  try{
+    await loadBookings();
+    renderAdminPanel();
+    if(showFeedback) showToast('Agenda atualizada');
+  }catch(err){
+    console.error(err);
+    if(showFeedback) showToast('Não foi possível atualizar a agenda', 3200);
+  }
+}
+
+function startAdminBookingsPolling(){
+  stopAdminBookingsPolling();
+  adminBookingsPolling = setInterval(async()=>{
+    if(!document.getElementById('painel')?.classList.contains('open')) return;
+    try{
+      await forceRefreshAdminBookings(false);
+    }catch(err){
+      console.error(err);
+    }
+  }, 10000);
+}
+
+function stopAdminBookingsPolling(){
+  if(adminBookingsPolling){
+    clearInterval(adminBookingsPolling);
+    adminBookingsPolling = null;
+  }
+}
+
+async function openAdminPanel(){
+  const panel = document.getElementById('painel');
+  if(!panel) return;
+  panel.classList.add('open');
+  panel.setAttribute('aria-hidden','false');
+  document.body.classList.add('admin-open');
+  updateAdminAccessUI();
+  if(isAdminAuthenticated()){
+    try{
+      await syncAdminStateFromRemote();
+      await forceRefreshAdminBookings(false);
+    }catch(err){
+      console.error(err);
+      showToast('Não foi possível sincronizar o painel agora');
+    }
+  }
+  renderAdminPanel();
+  startAdminBookingsPolling();
+}
+
+function closeAdminPanel(){
+  const panel = document.getElementById('painel');
+  if(!panel) return;
+  panel.classList.remove('open');
+  panel.setAttribute('aria-hidden','true');
+  document.body.classList.remove('admin-open');
+  stopAdminBookingsPolling();
+}
+
+async function handleAdminLogin(){
+  const emailEl = document.getElementById('adminEmail');
+  const passwordEl = document.getElementById('adminPassword');
+  const email = (emailEl?.value || '').trim();
+  const password = passwordEl?.value || '';
+  if(!email){
+    showToast('Informe o e-mail do proprietário');
+    return;
+  }
+  if(!password){
+    showToast('Informe a senha do painel');
+    return;
+  }
+  try{
+    await signInAdmin(email, password);
+    await syncAdminStateFromRemote();
+    await forceRefreshAdminBookings(false);
+    updateAdminAccessUI();
+    renderAdminPanel();
+    if(passwordEl) passwordEl.value = '';
+    showToast('Painel liberado com sucesso');
+  }catch(err){
+    console.error(err);
+    showToast('Login inválido ou painel ainda não configurado', 3200);
+  }
+}
+
+function logoutAdmin(){
+  clearAdminSession();
+  updateAdminAccessUI();
+  closeAdminPanel();
+  showToast('Sessão do painel encerrada');
 }
 
 const PROFESSIONALS = [
@@ -2797,11 +3631,13 @@ function confirmPayment(){
   if(!phone){showToast('Informe seu WhatsApp');return;}
   if(!address){showToast('Informe o endereço de entrega');return;}
   const total=cartTotal();
+  const cartSnapshot = cart.map(item=>({ ...item }));
   const itemsText=cart.map(c=>`• ${c.name} × ${c.qty} = R$${(c.price*c.qty).toFixed(2)}`).join('\n');
   document.getElementById('btnComprovante').onclick=()=>window.open(`https://wa.me/5563992777323?text=${encodeURIComponent(waMsg)}`,'_blank');
   document.getElementById('paySuccessText').textContent=`${name}, pedido recebido! Total: R$ ${total.toFixed(2).replace('.',',')}. Envie o comprovante PIX para confirmar a entrega.`;
   document.getElementById('checkoutForm').style.display='none';
   document.getElementById('paySuccess').classList.add('show');
+  applySaleToStock(cartSnapshot);
   cart=[];saveCart();renderCart();
 }
 
@@ -3005,6 +3841,9 @@ async function confirmBooking(){
   document.getElementById('successWA').href=waUrl;
   const pts=selDate.split('-');
   renderSlots(selDate,'slotsArea',onSlotMain,+pts[0],+pts[1]-1,+pts[2]);
+  if(document.getElementById('painel')?.classList.contains('open')){
+    forceRefreshAdminBookings(false);
+  }
   setTimeout(()=>{ window.location.href = waUrl; }, 250);
 }
 
@@ -3056,6 +3895,9 @@ async function confirmBookingModal(){
   document.getElementById('successWAM').href=waUrl;
   const pts=selDateM.split('-');
   renderSlots(selDateM,'slotsAreaM',onSlotMod,+pts[0],+pts[1]-1,+pts[2]);
+  if(document.getElementById('painel')?.classList.contains('open')){
+    forceRefreshAdminBookings(false);
+  }
   setTimeout(()=>{ window.location.href = waUrl; }, 250);
 }
 
@@ -3079,8 +3921,44 @@ document.getElementById('serviceSelect').addEventListener('change',()=>syncBooki
 document.getElementById('serviceSelectM').addEventListener('change',()=>syncBookingServiceUI('modal'));
 document.addEventListener('click',e=>{
   const option = e.target.closest('[data-professional-value]');
-  if(!option) return;
-  setProfessionalValue(option.dataset.professionalMode, option.dataset.professionalValue);
+  if(option){
+    setProfessionalValue(option.dataset.professionalMode, option.dataset.professionalValue);
+    return;
+  }
+  const statusButton = e.target.closest('[data-admin-status]');
+  if(statusButton){
+    updateBookingStatus(statusButton.dataset.adminDate, statusButton.dataset.adminSlot, statusButton.dataset.adminStatus);
+    return;
+  }
+  const stockAdjust = e.target.closest('[data-stock-adjust]');
+  if(stockAdjust){
+    adjustStockQuantity(stockAdjust.dataset.stockId, Number(stockAdjust.dataset.stockAdjust));
+    return;
+  }
+  const stockRemove = e.target.closest('[data-stock-remove]');
+  if(stockRemove){
+    removeStockItem(stockRemove.dataset.stockId);
+  }
+});
+document.addEventListener('input',e=>{
+  if(e.target.matches('#adminBookingSearch')){
+    renderAdminBookings();
+  }
+});
+document.addEventListener('change',e=>{
+  if(e.target.matches('#adminBookingScope, #adminBookingStatus')){
+    renderAdminBookings();
+  }
+});
+document.addEventListener('keydown',e=>{
+  if(e.key === 'Escape' && document.getElementById('painel')?.classList.contains('open')){
+    closeAdminPanel();
+  }
+});
+document.getElementById('painel').addEventListener('click',e=>{
+  if(e.target === document.getElementById('painel')){
+    closeAdminPanel();
+  }
 });
 
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:.08});
@@ -3090,6 +3968,8 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 // INIT
 // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 (async()=>{
+  if(!isAdminAuthenticated()) clearAdminSession();
+  updateAdminAccessUI();
   renderProfessionalPicker('main');
   renderProfessionalPicker('modal');
   await loadBookings();
@@ -3098,6 +3978,7 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
   renderCart();
   syncBookingServiceUI('main');
   syncBookingServiceUI('modal');
+  renderAdminPanel();
 })();
 </script>
 </body>
